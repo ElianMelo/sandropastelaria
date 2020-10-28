@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="modelo">
+<head>
+<link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+crossorigin="anonymous">
+<meta charset="utf-8">
+<link rel="stylesheet" href="./css/styles.css">
+<title>Modelo</title>
+</head>
+<body>
+	<div id="page-container">
+		<nav th:insert="fragments/navbar :: navbar">
+		</nav>
+		<main id="content-wrap" th:insert="this :: conteudo">
+		</main>
+		<footer id="footer" th:insert="fragments/footer :: footer">
+		</footer>
+	</div>
+</body>
+</html>

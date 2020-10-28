@@ -1,0 +1,44 @@
+* {
+	font-family: Arial !important;
+}
+
+li.nav-item {
+    margin: 0px 10px;
+}
+
+.padding-footer {
+	padding: 20px !important;
+}
+
+#page-container {
+	position: relative;
+	min-height: 100vh;
+}
+
+#content-wrap {
+	padding-bottom: 2.5rem;   
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem;    
+	text-align: center;   
+	background-color: #f8f9fa !important;    
+}
+
+.botao-cor {
+	background-color: #472907 !important;
+	padding: 6px 26px !important;
+	color: white !important;
+}
+
+.botao-cor:hover {
+	background-color: #D07208 !important;
+} 
+
+
+
+
+

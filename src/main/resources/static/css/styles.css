@@ -1,5 +1,7 @@
 * {
 	font-family: Arial !important;
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -31,47 +33,74 @@ td, th {
 	color: white !important;
 }
 
+.botao-cor:hover {
+	background-color: #D07208 !important;
+}
+
 .general {
 	display: flex;
 	flex-flow: row wrap;
+	height: calc(100vh - 56px);
 	justify-content: space-between;
 }
 
-.general > .form-register {
-	width: 100%;
-	padding: 0 15px;
+div > p {
+	text-align: center;
+	font-size: 24px;
 }
 
-.general > .table-register {
-	width: 100%;
-	padding-top: 10px;
+/* Estilos do menu lateral */
+.menu-bar {
+	width: 55px;
+	padding: 10px;
+	background-color: #472907;
 }
 
-.botao-cor:hover {
-	background-color: #D07208 !important;
-} 
+.menu-bar p {
+	text-align: center;
+	padding-bottom: 24px;
+}
 
-@media (min-width: 992px) {
-	.general {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: space-between;
-	}
-	
-	.general > .form-register {
-		width: 40%;
-		padding-right: 32px;
-		margin-right: 2%;
-		height: 100%;
-	}
-	
-	.general > .table-register {
-		width: 58%;
-		padding-top: 10px;
-		height: 100%;
-	}
-	
-	.body-padding {
-		padding: 0 10px;
-	}
+p.cadastrar {
+	padding-bottom: 32px;
+}
+
+.menu-bar img:hover {
+	cursor: pointer;
+}
+
+/* Estilos da seção de registros */
+.table-data {
+	width: calc(100% - 55px);
+	background-color: lightgray;
+}
+
+/* Estilos da seção de cadastro */
+.form-register {
+	width: calc(100% - 55px);
+	background-color: red;
+}
+
+/* Estilos da seção de atualização */
+.form-update {
+	width: calc(100% - 55px);
+	background-color: blue;
+}
+
+/* Estilos de estado */
+.activated {
+	display: block;
+	animation-name: sectionActivated;
+	animation-duration: 0.7s;
+	animation-fill-mode: forwards;
+}
+
+.disabled {
+	display: none;
+}
+
+/* Animações */
+@keyframes sectionActivated {
+	from { width: 0 }
+	to { width: calc(100% - 55px) }
 }

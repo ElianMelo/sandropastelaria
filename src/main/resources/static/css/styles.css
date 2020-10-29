@@ -1,5 +1,6 @@
 * {
 	font-family: Arial !important;
+	box-sizing: border-box;
 }
 
 li.nav-item {
@@ -8,6 +9,10 @@ li.nav-item {
 
 img {
 	max-width: 100%;
+}
+
+.alinhamento label {
+	text-align: right;
 }
 
 .title-form {
@@ -26,10 +31,47 @@ td, th {
 	color: white !important;
 }
 
+.general {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.general > .form-register {
+	width: 100%;
+	padding: 0 15px;
+}
+
+.general > .table-register {
+	width: 100%;
+	padding-top: 10px;
+}
+
 .botao-cor:hover {
 	background-color: #D07208 !important;
 } 
 
-.body-padding {
-	padding: 10px 10px;
+@media (min-width: 992px) {
+	.general {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+	}
+	
+	.general > .form-register {
+		width: 40%;
+		padding-right: 32px;
+		margin-right: 2%;
+		height: 100%;
+	}
+	
+	.general > .table-register {
+		width: 58%;
+		padding-top: 10px;
+		height: 100%;
+	}
+	
+	.body-padding {
+		padding: 0 10px;
+	}
 }

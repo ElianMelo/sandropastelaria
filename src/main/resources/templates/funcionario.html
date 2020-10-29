@@ -4,26 +4,26 @@
 <body>
 	<div th:fragment="conteudo">
 		<div class="body-padding">
-			<div class="row">
-				<div class="col-sm-12 col-lg-4 bg-light">
+			<section class="general">
+				<div class="bg-light form-register">
 					<form class="alinhamento" action="" method="POST" role="form">
 						<legend class="title-form">Cadastro de Funcionario</legend>
 	
 						<div class="form-group row">
-							<label for="nomeCompleto" class="col-sm-3 col-form-label">Nome Completo</label>
-							<div class="col-sm-9">
+							<label for="nomeCompleto" class="col-sm-4 col-form-label">Nome Completo</label>
+							<div class="col-sm-8">
 								<input type="text" class="form-control" id="nomeCompleto">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="cpf" class="col-sm-3 col-form-label">CPF</label>
-							<div class="col-sm-9">
+							<label for="cpf" class="col-sm-4 col-form-label">CPF</label>
+							<div class="col-sm-8">
 								<input type="text" class="form-control" id="cpf">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="cpf" class="col-sm-3 col-form-label">RG</label>
-							<div class="col-sm-9">
+							<label for="cpf" class="col-sm-4 col-form-label">RG</label>
+							<div class="col-sm-8">
 								<input type="text" class="form-control" id="rg">
 							</div>
 						</div>
@@ -34,20 +34,20 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="filiacao" class="col-sm-3 col-form-label">Filiação</label>
-							<div class="col-sm-9">
+							<label for="filiacao" class="col-sm-4 col-form-label">Filiação</label>
+							<div class="col-sm-8">
 								<input type="text" class="form-control" id="filiacao">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="cargo" class="col-sm-3 col-form-label">Cargo</label>
-							<div class="col-sm-9">
+							<label for="cargo" class="col-sm-4 col-form-label">Cargo</label>
+							<div class="col-sm-8">
 								<input type="text" class="form-control" id="cargo">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="ctps" class="col-sm-3 col-form-label">CTPS</label>
-							<div class="col-sm-9">
+							<label for="ctps" class="col-sm-4 col-form-label">CTPS</label>
+							<div class="col-sm-8">
 								<input type="text" class="form-control" id="ctps">
 							</div>
 						</div>
@@ -58,17 +58,15 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="remuneracao" class="col-sm-3 col-form-label">Remuneração</label>
-							<div class="col-sm-9">
+							<label for="remuneracao" class="col-sm-4 col-form-label">Remuneração</label>
+							<div class="col-sm-8">
 								<input type="text" class="form-control" id="remuneracao">
 							</div>
 						</div>
-						<br>
-	
 						<button type="submit" class="btn btn-primary">Cadastrar</button>
 					</form>
 				</div>
-				<div class="col-sm-12 col-lg-8">
+				<div class="table-register">
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -121,7 +119,7 @@
 						</tbody>
 					</table>
 				</div>
-			</div>	
+			</section>	
 		</div>
 	</div>
 </body>

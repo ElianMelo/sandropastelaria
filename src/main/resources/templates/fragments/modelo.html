@@ -13,10 +13,12 @@ crossorigin="anonymous">
 	<div id="page-container">
 		<nav th:insert="fragments/navbar :: navbar">
 		</nav>
-		<main id="content-wrap" th:insert="this :: conteudo">
+		<main th:insert="this :: conteudo">
 		</main>
+		<!--
 		<footer id="footer" th:insert="fragments/footer :: footer">
 		</footer>
+		-->
 	</div>
 </body>
 </html>

@@ -3,20 +3,125 @@
 <meta charset="utf-8">
 <body>
 	<div th:fragment="conteudo">
-		<style>
-			img {
-				max-width: 100%;
-			}
-		</style>
-		<div class="container">
+		<div class="body-padding">
 			<div class="row">
-				<div class="col">
-					<img src="img/paisagem1.jpg" alt="Paisagem 1">	
+				<div class="col-sm-12 col-lg-4 bg-light">
+					<form class="alinhamento" action="" method="POST" role="form">
+						<legend class="title-form">Cadastro de Funcionario</legend>
+	
+						<div class="form-group row">
+							<label for="nomeCompleto" class="col-sm-3 col-form-label">Nome Completo</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="nomeCompleto">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="cpf" class="col-sm-3 col-form-label">CPF</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="cpf">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="cpf" class="col-sm-3 col-form-label">RG</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="rg">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="nascimento" class="col-sm-4 col-form-label">Data de nascimento</label>
+							<div class="col-sm-8">
+								<input type="date" class="form-control" id="nascimento">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="filiacao" class="col-sm-3 col-form-label">Filiação</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="filiacao">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="cargo" class="col-sm-3 col-form-label">Cargo</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="cargo">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="ctps" class="col-sm-3 col-form-label">CTPS</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="ctps">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="jornadaSemanal" class="col-sm-4 col-form-label">Jornada Semanal</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="jornadaSemanal">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="remuneracao" class="col-sm-3 col-form-label">Remuneração</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="remuneracao">
+							</div>
+						</div>
+						<br>
+	
+						<button type="submit" class="btn btn-primary">Cadastrar</button>
+					</form>
 				</div>
-				<div class="col">
-					<img src="img/paisagem2.jpg" alt="Paisagem 2">	
+				<div class="col-sm-12 col-lg-8">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nome Completo</th>
+								<th>CPF</th>
+								<th>Cargo</th>
+								<th>Jornada Semanal</th>
+								<th>Remuneração</th>
+								<th>Excluir</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Elian Melo Morais</td>
+								<td>000.000.000-00</td>
+								<td>Garçom</td>
+								<td>14h</td>
+								<td>R$70,00</td>
+								<td>
+									<button type="button" class="btn btn-default btn-xs">
+										<img src="./img/delete.png" alt="">
+									</button>
+								</td>
+	
+							</tr>
+							<tr>
+								<td>Elian Melo Morais</td>
+								<td>000.000.000-00</td>
+								<td>Garçom</td>
+								<td>14h</td>
+								<td>R$70,00</td>
+								<td>
+									<button type="button" class="btn btn-default btn-xs">
+										<img src="./img/delete.png" alt="">
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td>Elian Melo Morais</td>
+								<td>000.000.000-00</td>
+								<td>Garçom</td>
+								<td>14h</td>
+								<td>R$70,00</td>
+								<td>
+									<button type="button" class="btn btn-default btn-xs">
+										<img src="./img/delete.png" alt="">
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			</div>
+			</div>	
 		</div>
 	</div>
 </body>

@@ -6,26 +6,18 @@ li.nav-item {
     margin: 0px 10px;
 }
 
-.padding-footer {
-	padding: 20px !important;
+img {
+	max-width: 100%;
 }
 
-#page-container {
-	position: relative;
-	min-height: 100vh;
+.title-form {
+	text-align: center;
+	color: #472907;
+	font-weight: bolder;
 }
 
-#content-wrap {
-	padding-bottom: 2.5rem;   
-}
-
-#footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 2.5rem;    
-	text-align: center;   
-	background-color: #f8f9fa !important;    
+td, th {
+	text-align: center !important;
 }
 
 .botao-cor {
@@ -38,7 +30,6 @@ li.nav-item {
 	background-color: #D07208 !important;
 } 
 
-
-
-
-
+.body-padding {
+	padding: 10px 10px;
+}

@@ -13,8 +13,12 @@ img {
 	max-width: 100%;
 }
 
-.alinhamento label {
-	text-align: right;
+.form {
+	padding: 0 24px;
+}
+
+.form label {
+	display: block;
 }
 
 .title-form {
@@ -49,6 +53,28 @@ div > p {
 	font-size: 24px;
 }
 
+h2 {
+	color: #472907;
+	font-size: 24px;
+	font-weight: bold;
+	padding: 10px 0 10px 24px;
+}
+
+.title-section {
+	padding-bottom: 18px;
+	border-bottom: 1px solid #dee2e6;
+}
+
+.table-register {
+	overflow: scroll;
+	margin: 12px 12px 0;
+	background-color: #fff;
+}
+
+.form-user-register {
+	margin: 12px 12px 0;
+}
+
 /* Estilos do menu lateral */
 .menu-bar {
 	width: 55px;
@@ -56,42 +82,75 @@ div > p {
 	background-color: #472907;
 }
 
-.menu-bar p {
-	text-align: center;
-	padding-bottom: 24px;
+.menu-bar img {
+	display: block;
+	margin: 0 auto;	
+	padding-bottom: 16px;
+	width: 28px;
 }
 
-p.cadastrar {
-	padding-bottom: 32px;
-}
 
 .menu-bar img:hover {
 	cursor: pointer;
 }
 
+button[type="submit"] {
+	background-color: #472907;
+	border-color: #472907;
+}
+
+button[type="submit"]:hover {
+	background-color: #fff;
+	border-color: #472907;
+	color: #472907;
+}
+
+.form-group-general {
+	display: flex;
+	flex-flow: wrap row;
+	justify-content: space-between;
+}
+
+.columns-3 {
+	width: 100%;
+}
+
+.columns-4 {
+	width: 100%;
+}
+
+.columns-8 {
+	width: 100%;
+}
+
+.columns-2 {
+	width: 100%;
+}
+
+
 /* Estilos da seção de registros */
 .table-data {
 	width: calc(100% - 55px);
-	background-color: lightgray;
+	background-color: #fff;
 }
 
 /* Estilos da seção de cadastro */
 .form-register {
 	width: calc(100% - 55px);
-	background-color: red;
+	background-color: #fff;
 }
 
 /* Estilos da seção de atualização */
 .form-update {
 	width: calc(100% - 55px);
-	background-color: blue;
+	background-color: #fff;
 }
 
 /* Estilos de estado */
 .activated {
 	display: block;
 	animation-name: sectionActivated;
-	animation-duration: 0.7s;
+	animation-duration: 0.6s;
 	animation-fill-mode: forwards;
 }
 
@@ -103,4 +162,34 @@ p.cadastrar {
 @keyframes sectionActivated {
 	from { width: 0 }
 	to { width: calc(100% - 55px) }
+}
+
+/* Media Queries */
+@media (min-width: 992px) {
+	.table-register {
+		width: 98%;
+		overflow: visible;
+		margin: 12px auto 0;
+	}
+	
+	.form-user-register {
+		width: 98%;
+		margin: 12px auto 0;
+	}
+	
+	.columns-3 {
+		width: 33%;
+	}
+
+	.columns-4 {
+		width: 20%;
+	}
+
+	.columns-8 {
+		width: 79%;
+	}
+
+	.columns-2 {
+		width: 49.5%;
+	}
 }

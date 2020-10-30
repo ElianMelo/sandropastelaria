@@ -21,9 +21,11 @@ const enableOrDisableClass = (componentsScreens, idNumber) => {
 
 menuBar.addEventListener('click', (e) => {
   const componentsScreens = [tableData, formRegister, formUpdate];
-  const idNumber = (e.target.id) ? Number(e.target.id) : null;
+  let idNumber = (e.target.id) ? Number(e.target.id) : null;
+	
 
   if (idNumber) {
+	idNumber--;
     enableOrDisableClass(componentsScreens, idNumber);
   }
 });

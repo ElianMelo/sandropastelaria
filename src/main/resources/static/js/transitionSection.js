@@ -19,12 +19,24 @@ const enableOrDisableClass = (componentsScreens, idNumber) => {
   });
 }
 
+const enableBounceAnimation = (e) => {
+	const clickedIcon = e.target;
+	
+	if(clickedIcon.classList.contains('animation-bounce')) {
+		clickedIcon.classList.remove('animation-bounce');
+		setTimeout(() => { clickedIcon.classList.add('animation-bounce'); }, 50);
+ 	} else {	
+		clickedIcon.classList.add('animation-bounce');
+	}
+}
+
 menuBar.addEventListener('click', (e) => {
   const componentsScreens = [tableData, formRegister, formUpdate];
   let idNumber = (e.target.id) ? Number(e.target.id) : null;
 	
 
   if (idNumber) {
+	enableBounceAnimation(e); 
 	idNumber--;
     enableOrDisableClass(componentsScreens, idNumber);
   }

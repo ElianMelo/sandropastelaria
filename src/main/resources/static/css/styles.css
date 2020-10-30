@@ -79,7 +79,7 @@ h2 {
 .menu-bar {
 	width: 55px;
 	padding: 10px;
-	background-color: #472907;
+	background-color: #8b6634;
 }
 
 .menu-bar img {
@@ -87,6 +87,18 @@ h2 {
 	margin: 0 auto;	
 	padding-bottom: 16px;
 	width: 28px;
+}
+ /* Animação de bounce do menu lateral */
+ .animation-bounce {
+	animation-name: bounce;
+	animation-duration: 0.3s; 
+	animation-iteration-count: 1; 
+ }
+ 
+@keyframes bounce {
+   0%  { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }	
 }
 
 

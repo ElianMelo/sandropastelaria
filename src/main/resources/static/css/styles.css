@@ -88,7 +88,7 @@ h2 {
 	padding-bottom: 16px;
 	width: 28px;
 }
- /* Anima��o de bounce do menu lateral */
+ /* Anima��o de bounce do menu lateral */
  .animation-bounce {
 	animation-name: bounce;
 	animation-duration: 0.3s; 
@@ -143,19 +143,16 @@ button[type="submit"]:hover {
 /* Estilos da seção de registros */
 .table-data {
 	width: calc(100% - 55px);
-	background-color: #fff;
 }
 
 /* Estilos da seção de cadastro */
 .form-register {
 	width: calc(100% - 55px);
-	background-color: #fff;
 }
 
 /* Estilos da seção de atualização */
 .form-update {
 	width: calc(100% - 55px);
-	background-color: #fff;
 }
 
 /* Estilos de estado */
@@ -172,8 +169,8 @@ button[type="submit"]:hover {
 
 /* Animações */
 @keyframes sectionActivated {
-	from { width: 0 }
-	to { width: calc(100% - 55px) }
+	from { transform: translateY(100%) }
+	to { transform: translateY(0px) }
 }
 
 /* Media Queries */

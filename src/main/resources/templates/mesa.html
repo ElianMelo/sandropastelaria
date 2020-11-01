@@ -3,22 +3,169 @@
 <meta charset="utf-8">
 <body>
 	<div th:fragment="conteudo">
-		<style>
-			img {
-				max-width: 100%;
-			}
-		</style>
-		<h2>Mesa</h2>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<img src="img/paisagem1.jpg" alt="Paisagem 1">	
+		<head>
+				<link rel="stylesheet" href="./css/mesa/style.css">
+		<script src="./js/mesa/function.js"></script>
+		</head>
+	
+	
+		<div class="body-padding">
+			<section class="general">
+				<div class="table-data">
+					<div class="table-register">
+						<h2>Gerenciamento de mesas</h2>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Número</th>
+									<th>Status</th>
+									<th>Limpeza</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="numerosMesa">01</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">02</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">03</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">04</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">05</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">06</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">07</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">08</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">09</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">10</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">11</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">12</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">13</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">14</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+								<tr>
+									<td class="numerosMesa">15</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
+									</td>
+									<td>
+										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-				<div class="col">
-					<img src="img/paisagem2.jpg" alt="Paisagem 2">	
-				</div>
-			</div>
+				
+			</section>	
 		</div>
 	</div>
+	
 </body>
 </html>

@@ -3,8 +3,54 @@
 <meta charset="utf-8">
 <body>
 	<div th:fragment="conteudo">
-		<h1>Seja bem-vindo(a) ao nosso site!</h1>
-		<h2>Aqui será o login</h2>
+		<div class="general">
+			<div class="menu-bar">
+				<img src="./img/logout.png" id="1" />
+				<img src="./img/person.svg" id="2" />
+			</div>
+
+			<div class="table-data">
+				<div class="login-externo">
+					<div class="login-interno shadow-lg p-3 mb-5 bg-white rounded">
+						<form>
+							<h2 class="login-text">Login</h2>
+							<div class="form-group">
+								<label for="user">Usuário</label>
+								<input type="text" class="form-control" id="user">
+							</div>
+							<div class="form-group">
+								<label for="pass">Password</label>
+								<input type="password" class="form-control" id="pass">
+							</div>
+							<div class="login-btndiv">
+								<button type="submit" class="btn btn-primary">Login</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-register disabled">
+				<div class="login-externo">
+					<div class="login-interno shadow-lg p-3 mb-5 bg-white rounded">
+						<form>
+							<h2 class="login-text">Cadastro</h2>
+							<div class="form-group">
+								<label for="user">Usuário</label>
+								<input type="text" class="form-control" id="user">
+							</div>
+							<div class="form-group">
+								<label for="pass">Password</label>
+								<input type="password" class="form-control" id="pass">
+							</div>
+							<div class="login-btndiv">
+								<button type="submit" class="btn btn-primary">Cadastrar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

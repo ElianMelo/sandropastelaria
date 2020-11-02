@@ -3,20 +3,180 @@
 <meta charset="utf-8">
 <body>
 	<div th:fragment="conteudo">
-		<style>
-			img {
-				max-width: 100%;
-			}
-		</style>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<img src="img/paisagem1.jpg" alt="Paisagem 1">	
+		<div class="body-padding">	
+			<section class="general">
+				<div class="menu-bar">
+					<img src="./img/list.svg" id="1" />
+					<img src="./img/person.svg" id="2" />
+					<img src="./img/update.svg" id="3" style="padding-right: 3px" />
 				</div>
-				<div class="col">
-					<img src="img/paisagem2.jpg" alt="Paisagem 2">	
+				
+				<div class="table-data">
+					<div class="table-register">
+						<h2>Produtos Cadastrados</h2>
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Quantidade</th>
+									<th>Tipo</th>
+									<th>Validade</th>
+									<th>Excluir</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Carne Moída</td>
+									<td>20 Kg</td>
+									<td>Matéria prima</td>
+									<td>2 Meses</td>
+									<td>
+										<button type="button" class="btn btn-default btn-xs">
+											<img src="./img/delete.png" alt="">
+										</button>
+									</td>
+		
+								</tr>
+								<tr>
+								<td>Carne Moída</td>
+									<td>20 Kg</td>
+									<td>Matéria prima</td>
+									<td>2 Meses</td>
+									<td>
+										<button type="button" class="btn btn-default btn-xs">
+											<img src="./img/delete.png" alt="">
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>Carne Moída</td>
+									<td>20 Kg</td>
+									<td>Matéria prima</td>
+									<td>2 Meses</td>
+									<td>
+										<button type="button" class="btn btn-default btn-xs">
+											<img src="./img/delete.png" alt="">
+										</button>
+									</td>
+								</tr>
+								<tr>
+									<td>Carne Moída</td>
+									<td>20 Kg</td>
+									<td>Matéria prima</td>
+									<td>2 Meses</td>
+									<td>
+										<button type="button" class="btn btn-default btn-xs">
+											<img src="./img/delete.png" alt="">
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div>
+				
+				<div class="form-register disabled">
+				 	<div class="form-user-register">
+						<h2 class="title-section">Cadastro de Produto</h2>
+						<form class="form" action="" method="POST" role="form">
+							<div class="form-group-general">
+								<div class="form-group columns-50">
+									<label for="nome" class="col-form-label">Nome</label>
+									<div>
+										<input type="text" class="form-control" id="nome">
+									</div>
+								</div>
+								<div class="form-group columns-50">
+									<label for="Quantidade" class="col-form-label">Quantidade</label>
+									<div>
+										<input type="text" class="form-control" id="Quantidade">
+									</div>
+								</div>
+		
+							</div>
+							
+							<div class="form-group-general">
+								<div class="form-group columns-50">
+								 	<label for="tipo" class="col-form-label">Tipo de Produto</label>
+									<div>
+										<select class="form-control" id="tipo">
+											<option value="">Selecione um tipo</option>
+											<option value="0">Matéria prima</option>
+											<option value="0">Bebidas</option>
+											<option value="0">Doces</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group columns-50">
+								 	<label for="validade" class="col-form-label">Validade</label>
+									<div>
+										<input type="text" class="form-control" id="validade" style="text-align: center">
+									</div>
+								</div>
+				
+							</div>
+					
+							<button type="submit" class="btn btn-primary my-3">Cadastrar</button>
+						</form>
+					</div>
+				</div>
+				
+				<div class="form-update disabled">
+					<div class="form-user-register">
+						<h2 class="title-section">Atualizar dados do Produto</h2>
+						<form class="form" action="" method="POST" role="form">
+							<div class="form-group-general">
+								<div class="form-group columns-25">
+								 	<label for="nascimento" class="col-form-label">Produto</label>
+									<div>
+										<select class="form-control">
+											<option value="">Selecione um produto</option>
+											<option value="0">Carne moída</option>
+											<option value="0">Carne moída</option>
+											<option value="0">Carne moída</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						
+							<div class="form-group-general">
+								<div class="form-group columns-25">
+									<label for="nome" class="col-form-label">Nome</label>
+									<div>
+										<input type="text" class="form-control" id="nome">
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="Quantidade" class="col-form-label">Quantidade</label>
+									<div>
+										<input type="text" class="form-control" id="Quantidade">
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="validade" class="col-form-label">Validade</label>
+									<div>
+										<input type="text" class="form-control" id="Validade">
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="Tipo" class="col-form-label">Tipo</label>
+									<div>
+										<select class="form-control" id="tipo">
+											<option value="">Selecione um tipo</option>
+											<option value="0">Matéria prima</option>
+											<option value="0">Bebidas</option>
+											<option value="0">Doces</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
+							<button type="submit" class="btn btn-primary my-3">Salvar alteração</button>
+						</form>
+					</div>
+				</div>
+				
+			</section>	
 		</div>
 	</div>
 </body>

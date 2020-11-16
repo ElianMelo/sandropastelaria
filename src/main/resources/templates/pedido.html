@@ -1,137 +1,153 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:include="fragments/modelo :: modelo">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:include="fragments/modelo :: modelo">
 <meta charset="utf-8">
 <body>
 	<div th:fragment="conteudo">
 		<div class="general">
 			<div class="menu-bar">
-				<img src="./img/list.svg" id="1" />
-				<img src="./img/order.svg" id="2" />
-				<img src="./img/update_order.svg" id="3" />
+				<img src="./img/list.svg" id="1" /> <img src="./img/order.svg"
+					id="2" /> <img src="./img/update_order.svg" id="3" />
 			</div>
-			
+
 			<div class="table-data">
 				<h2 class="title-section">Lista de Pedidos</h2>
-				<div class="cards-order">					
-					<div class="order">
-						<div class="order-number">
-							<p>Pedido #001</p>
+				<div class="cards-order">
+					<div class="box">
+						<div class="header-box"></div>
+						<div class="ball-header">
+							<p>10</p>
 						</div>
-						
-						<div class="order-general">
-							<p>MESA - 00</p>
-							<p>15:40:36</p>
-						</div>
-						
-						<div class="order-products">
-							<p><a href="#">Ver Produtos</a></p>
-						</div>
-						
-						<div class="order-status">
-							<p class="onHold">Em espera</p>
-							<form>
-								<button type="submit" class="btn btn-primary my-3">Atribuir</button>
-								<button type="submit" class="btn btn-success my-3">Finalizar</button>
-							</form>
-						</div>
-					</div>
-					<div class="order">
-						<div class="order-number">
-							<p>Pedido #002</p>
-						</div>
-						
-						<div class="order-general">
-							<p>MESA - 10</p>
-							<p>00:40:36</p>
-						</div>
-						
-						<div class="order-products">
-							<p><a href="#">Ver Produtos</a></p>
-						</div>
-						
-						<div class="order-status">
-							<p class="inPreparation">Em preparação</p>
-							<form>
-								<button type="submit" class="btn btn-primary my-3">Atribuir</button>
-								<button type="submit" class="btn btn-success my-3">Finalizar</button>
-							</form>
+						<div class="outer-info">
+							<h2>Pedido #0191</h2>
+							<p>18:30:23</p>
+							<div class="info-sol">
+								<div>
+									<p>
+										<span>A</span> status pedido
+									</p>
+								</div>
+
+								<div>
+									<p>
+										<span>10</span> n° produtos
+									</p>
+								</div>
+							</div>
+
+							<a href="#">Atribuir</a>
 						</div>
 					</div>
-					<div class="order">
-						<div class="order-number">
-							<p>Pedido #003</p>
+					<div class="box">
+						<div class="header-box"></div>
+						<div class="ball-header">
+							<p>10</p>
 						</div>
-						
-						<div class="order-general">
-							<p>MESA - 04</p>
-							<p>09:32:22</p>
-						</div>
-						
-						<div class="order-products">
-							<p><a href="#">Ver Produtos</a></p>
-						</div>
-						
-						<div class="order-status">
-							<p class="delivered">Entregue</p>
-							<form>
-								<button type="submit" class="btn btn-primary my-3">Atribuir</button>
-								<button type="submit" class="btn btn-success my-3">Finalizar</button>
-							</form>
-						</div>
-					</div>
-					<div class="order">
-						<div class="order-number">
-							<p>Pedido #004</p>
-						</div>
-						
-						<div class="order-general">
-							<p>MESA - 08</p>
-							<p>23:23:17</p>
-						</div>
-						
-						<div class="order-products">
-							<p><a href="#">Ver Produtos</a></p>
-						</div>
-						
-						<div class="order-status">
-							<p class="inPreparation">Em preparação</p>
-							<form>
-								<button type="submit" class="btn btn-primary my-3">Atribuir</button>
-								<button type="submit" class="btn btn-success my-3">Finalizar</button>
-							</form>
+						<div class="outer-info">
+							<h2>Pedido #0191</h2>
+							<p>18:30:23</p>
+							<div class="info-sol">
+								<div>
+									<p>
+										<span>A</span> status pedido
+									</p>
+								</div>
+
+								<div>
+									<p>
+										<span>10</span> n° produtos
+									</p>
+								</div>
+							</div>
+
+							<a href="#">Atribuir</a>
 						</div>
 					</div>
-					<div class="order">
-						<div class="order-number">
-							<p>Pedido #005</p>
+					<div class="box">
+						<div class="header-box"></div>
+						<div class="ball-header">
+							<p>10</p>
 						</div>
-						
-						<div class="order-general">
-							<p>MESA - 12</p>
-							<p>13:14:06</p>
+						<div class="outer-info">
+							<h2>Pedido #0191</h2>
+							<p>18:30:23</p>
+							<div class="info-sol">
+								<div>
+									<p>
+										<span>A</span> status pedido
+									</p>
+								</div>
+
+								<div>
+									<p>
+										<span>10</span> n° produtos
+									</p>
+								</div>
+							</div>
+
+							<a href="#">Atribuir</a>
 						</div>
-						
-						<div class="order-products">
-							<p><a href="#">Ver Produtos</a></p>
+					</div>
+					<div class="box">
+						<div class="header-box"></div>
+						<div class="ball-header">
+							<p>10</p>
 						</div>
-						
-						<div class="order-status">
-							<p class="onHold">Em espera</p>
-							<form>
-								<button type="submit" class="btn btn-primary my-3">Atribuir</button>
-								<button type="submit" class="btn btn-success my-3">Finalizar</button>
-							</form>
+						<div class="outer-info">
+							<h2>Pedido #0191</h2>
+							<p>18:30:23</p>
+							<div class="info-sol">
+								<div>
+									<p>
+										<span>A</span> status pedido
+									</p>
+								</div>
+
+								<div>
+									<p>
+										<span>10</span> n° produtos
+									</p>
+								</div>
+							</div>
+
+							<a href="#">Atribuir</a>
+						</div>
+					</div>
+					<div class="box">
+						<div class="header-box"></div>
+						<div class="ball-header">
+							<p>10</p>
+						</div>
+						<div class="outer-info">
+							<h2>Pedido #0191</h2>
+							<p>18:30:23</p>
+							<div class="info-sol">
+								<div>
+									<p>
+										<span>A</span> status pedido
+									</p>
+								</div>
+
+								<div>
+									<p>
+										<span>10</span> n° produtos
+									</p>
+								</div>
+							</div>
+
+							<a href="#">Atribuir</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="form-register disabled">
-			 	<div class="form-user-register">
+				<div class="form-user-register">
 					<h2 class="title-section">Cadastro de Pedidos</h2>
 					<form class="form" action="" method="POST" role="form">
 						<div class="form-group-general">
 							<div class="form-group columns-25">
-								<label for="numeroMesa" class="col-form-label">Número da Mesa</label>
+								<label for="numeroMesa" class="col-form-label">Número da
+									Mesa</label>
 								<div>
 									<select class="form-control" id="numeroMesa">
 										<option>selecione uma mesa</option>
@@ -142,10 +158,11 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="form-group-general">
 							<div class="form-group columns-30">
-								<label for="prodComida" class="col-form-label">Produto - Comida</label>
+								<label for="prodComida" class="col-form-label">Produto -
+									Comida</label>
 								<div>
 									<select class="form-control" id="prodComida">
 										<option>selecione um produto - comida</option>
@@ -155,23 +172,24 @@
 									</select>
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-10">
 								<label for="quantidadeComida" class="col-form-label">Quantidade</label>
 								<div>
 									<input type="text" class="form-control" id="quantidadeComida">
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-10">
 								<label id="adicionar" class="col-form-label">adicionar</label>
 								<div>
 									<button class="btn btn-primary w-100 botao-cor">Adicionar</button>
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-30">
-								<label for="prodBebida" class="col-form-label">Produto - Bebida</label>
+								<label for="prodBebida" class="col-form-label">Produto -
+									Bebida</label>
 								<div>
 									<select class="form-control" id="prodBebida">
 										<option>selecione um produto - bebida</option>
@@ -181,14 +199,14 @@
 									</select>
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-10">
 								<label for="quantidadeBebida" class="col-form-label">Quantidade</label>
 								<div>
 									<input type="text" class="form-control" id="quantidadeBebida">
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-10">
 								<label id="adicionar" class="col-form-label">adicionar</label>
 								<div>
@@ -196,7 +214,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="form-group-general">
 							<table class="table table-hover columns-50">
 								<thead>
@@ -216,7 +234,7 @@
 									</tr>
 								</tbody>
 							</table>
-							
+
 							<table class="table table-hover columns-50">
 								<thead>
 									<tr>
@@ -232,8 +250,9 @@
 								</tbody>
 							</table>
 						</div>
-						
-						<button type="submit" class="btn btn-primary my-3">Cadastrar Pedido</button>
+
+						<button type="submit" class="btn btn-primary my-3">Cadastrar
+							Pedido</button>
 					</form>
 				</div>
 			</div>
@@ -243,7 +262,8 @@
 					<form class="form" action="" method="POST" role="form">
 						<div class="form-group-general">
 							<div class="form-group columns-25">
-								<label for="numeroPedido" class="col-form-label">Número do Pedido</label>
+								<label for="numeroPedido" class="col-form-label">Número
+									do Pedido</label>
 								<div>
 									<select class="form-control" id="numeroPedido">
 										<option>selecione o pedido</option>
@@ -254,10 +274,11 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="form-group-general">
 							<div class="form-group columns-30">
-								<label for="prodComida" class="col-form-label">Produto - Comida</label>
+								<label for="prodComida" class="col-form-label">Produto -
+									Comida</label>
 								<div>
 									<select class="form-control" id="prodComida">
 										<option>selecione um produto - comida</option>
@@ -267,23 +288,24 @@
 									</select>
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-10">
 								<label for="quantidadeComida" class="col-form-label">Quantidade</label>
 								<div>
 									<input type="text" class="form-control" id="quantidadeComida">
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-10">
 								<label id="adicionar" class="col-form-label">adicionar</label>
 								<div>
 									<button class="btn btn-primary w-100 botao-cor">Adicionar</button>
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-30">
-								<label for="prodBebida" class="col-form-label">Produto - Bebida</label>
+								<label for="prodBebida" class="col-form-label">Produto -
+									Bebida</label>
 								<div>
 									<select class="form-control" id="prodBebida">
 										<option>selecione um produto - bebida</option>
@@ -293,14 +315,14 @@
 									</select>
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-10">
 								<label for="quantidadeBebida" class="col-form-label">Quantidade</label>
 								<div>
 									<input type="text" class="form-control" id="quantidadeBebida">
 								</div>
 							</div>
-							
+
 							<div class="form-group columns-10">
 								<label id="adicionar" class="col-form-label">adicionar</label>
 								<div>
@@ -308,7 +330,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="form-group-general">
 							<table class="table table-hover columns-50">
 								<thead>
@@ -339,7 +361,7 @@
 									</tr>
 								</tbody>
 							</table>
-							
+
 							<table class="table table-hover columns-50">
 								<thead>
 									<tr>
@@ -361,8 +383,9 @@
 								</tbody>
 							</table>
 						</div>
-						
-						<button type="submit" class="btn btn-primary my-3">Atualizar Pedido</button>
+
+						<button type="submit" class="btn btn-primary my-3">Atualizar
+							Pedido</button>
 					</form>
 				</div>
 			</div>

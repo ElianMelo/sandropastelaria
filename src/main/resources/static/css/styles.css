@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&display=swap');
+
 * {
-	font-family: Arial !important;
+	font-family: Montserrat, sans-serif;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -53,16 +55,13 @@ div > p {
 	font-size: 24px;
 }
 
-h2 {
+.title-section {
+	padding-bottom: 18px;
+	border-bottom: 1px solid #dee2e6;
 	color: #472907;
 	font-size: 24px;
 	font-weight: bold;
 	padding: 10px 0 10px 24px;
-}
-
-.title-section {
-	padding-bottom: 18px;
-	border-bottom: 1px solid #dee2e6;
 }
 
 .table-register {
@@ -175,85 +174,104 @@ button[type="submit"]:hover {
 .cards-order {
 	display: flex;
 	flex-flow: wrap row;
-	justify-content: space-between;
-	margin: 12px 12px 0;
+	justify-content: space-around;
+	margin: 12px 12px;
 }
 
-.order {
-	width: 100%;
-	margin-top: 16px;
-	padding: 15px 10px;
-	border-radius: 20px;
-	border: 1px solid transparent;
+.box {
+	width: 240px;
+	margin: 10px auto;
+	background-color: #fff;
+	position: relative;
+	padding-bottom: 24px;
+	border-radius: 35px 35px 30px 30px;
 	box-shadow: 0px 0px 11px -2px #000000;
 }
 
-.order-number {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+.header-box {
+	width: 100%;
+	height: 90px;
+	border-radius: 30px 30px 0 0;
+	background-color: #ffc107;
 }
 
-.order-number p {
-	margin: 0;
-	padding: 15px 0;
+
+.ball-header {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	position: absolute;
+	left: 80px;
+	top: 40px;
+	background-color: #fff;
+	box-shadow: 0px 0px 11px -2px #000000;
+}
+
+.ball-header p {
+	font-size: 50px;
+	padding-left: 5px;
+	font-weight: 700;
+	text-align: center;
+	line-height: 90px;
+	color: #ffc107;
+}
+
+.outer-info {
+	margin: 60px 18px 0;
+}
+
+.outer-info h2 {
 	font-size: 24px;
-	font-weight: 600;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;
 }
 
-.order-general {
+.outer-info h2 + p {
+	text-align: center;
+}
+
+.info-sol {
+	margin-top: 24px;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.order-general p {
-	margin: 0;
-	padding: 10px 0;
-	font-size: 18px;
-}
-
-.order-products {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.order-products p {
-	margin: 0;
-	padding: 10px 0;
-}
-
-.order-products a {
+.info-sol div p {
+	text-align: center;
 	color: #472907;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
 }
 
-.order-status p {
-	font-size: 16px;
-	margin: 10px auto;
-	width: 120px;
-	
+.info-sol div p > span {
+	display: block;
+	font-size: 24px;
+	font-weight: 700;
+	color: #ffc107;
 }
 
-.order-status form {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
+.outer-info a, .outer-info a:visited {
+	display: block;
+	margin-top: 16px;
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 10px;
+	color: #fff;
+	padding: 8px 0;
+	border: 1px solid transparent;
+	background-color: #ffc107;
+	transition: all 0.5s;
 }
 
-.onHold {
-	background-color: rgba(255, 0, 0, 0.3);
-	border: 1px solid red;
-	color: red;
-}
-
-.inPreparation {
-	background-color: rgba(0, 0, 255, 0.3);
-	border: 1px solid blue;
-	color: blue;
-}
-
-.delivered {
-	background-color: rgba(0, 255, 0, 0.3);
-	border: 1px solid green;
-	color: green;
+.outer-info a:hover {
+	background-color: #fff;
+	border: 1px solid #ffc107;
+	color: #ffc107;
 }
 
 /* Estilos de estado */

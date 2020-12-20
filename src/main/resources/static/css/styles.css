@@ -78,15 +78,21 @@ div > p {
 .menu-bar {
 	width: 55px;
 	padding: 10px;
-	background-color: #8b6634;
+	background-color: #472907;
 }
 
-.menu-bar img {
-	display: block;
-	margin: 0 auto;	
-	padding-bottom: 16px;
-	width: 28px;
+.menu-bar p {
+	text-align: center;
 }
+
+.menu-bar i {
+	color: #fff;
+}
+
+.menu-bar p:hover {
+	cursor: pointer;
+}
+
  /* Anima��o de bounce do menu lateral */
  .animation-bounce {
 	animation-name: bounce;
@@ -98,11 +104,6 @@ div > p {
    0%  { transform: translateY(0px); }
   50%  { transform: translateY(-8px); }
   100% { transform: translateY(0px); }	
-}
-
-
-.menu-bar img:hover {
-	cursor: pointer;
 }
 
 button[type="submit"] {

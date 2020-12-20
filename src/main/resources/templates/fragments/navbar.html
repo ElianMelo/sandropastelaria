@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-warning">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
   
-  <div class="collapse navbar-collapse" id="#navbarToggleExternalContent">
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-      	<a href="/"><img src="./img/logo.png" style="height: 40px;" alt="Logo"></a>
+      <li class="nav-item text-center mb-lg-0 mb-sm-2">
+      	<a href="/"><img src="./img/logo.png" style="height: 60px" alt="Logo Pastelaria"></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item d-sm-block d-lg-inline-block mb-lg-0 mb-sm-1">
         <a class="nav-link btn botao-cor" href="/pedido">Pedido</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item d-sm-block d-lg-inline-block mb-lg-0 mb-sm-1">
         <a class="nav-link btn botao-cor" href="/mesa">Mesa</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link btn botao-cor" href="/funcionario">Funcionario</a>
+      <li class="nav-item d-sm-block d-lg-inline-block mb-lg-0 mb-sm-1">
+        <a class="nav-link btn botao-cor" href="/funcionario">Funcionário</a>
       </li>
       <li class="nav-item">
         <a class="nav-link btn botao-cor" href="/produto-listagem">Produto</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item d-sm-block d-lg-inline-block mb-lg-0 mb-sm-1">
         <a class="nav-link btn botao-cor" href="/cozinha">Cozinha</a>
       </li>
-      <li class="nav-item" style="margin-left: auto">
+      <li class="nav-item mb-lg-0 my-sm-2" style="margin-left: auto">
       	<a href="/"><img src="./img/logout.png" style="height: 40px;" alt="Logout"></a>
       </li>
     </ul>

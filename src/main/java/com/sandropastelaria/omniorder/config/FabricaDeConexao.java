@@ -5,7 +5,7 @@ import java.sql.Connection;
 public class FabricaDeConexao {
 	public static Connection getConnection() {
 		try {
-			return DriverManager.getConnection("jdbc:mysql://localhost/omniorder?serverTimezone=UTC", "root", "");
+			return DriverManager.getConnection("jdbc:mysql://localhost/sandro_pastelaria?serverTimezone=UTC", "root", "");
 		} catch(Exception e) {
 			throw new RuntimeException(e);
 		}

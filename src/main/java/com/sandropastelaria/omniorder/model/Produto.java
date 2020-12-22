@@ -44,11 +44,14 @@ public class Produto {
 	}
 	
 	public String getTipoProduto() {
-		return tipoProduto.getDescricao();
+		if(this.tipoProduto != null) {
+			return this.tipoProduto.getDescricao();
+		}
+		return "";
 	}
 	
-	public void setTipoProduto(TipoProduto tipoProduto) {
-		this.tipoProduto = tipoProduto;
+	public void setTipoProduto(String tipoProduto) {
+		this.tipoProduto = TipoProduto.toEnum(tipoProduto);
 	}
 
 	public Integer getIdProduto() {

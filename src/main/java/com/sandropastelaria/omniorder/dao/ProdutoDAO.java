@@ -27,7 +27,7 @@ public class ProdutoDAO {
 			stmt.close();
 			conexao.close();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println(e);
 		}
 	}
 
@@ -60,7 +60,7 @@ public class ProdutoDAO {
 	public void excluir(int id) {
 		Connection conexao = FabricaDeConexao.getConnection();
 		PreparedStatement stmt;
-		String sql = "delete from produto where id = ?";
+		String sql = "delete from produto where id_produto = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, id);
@@ -76,7 +76,7 @@ public class ProdutoDAO {
 		Connection conexao = FabricaDeConexao.getConnection();
 		PreparedStatement stmt;
 		String sql = "update produto set nome_produto=?,quantidade=?,tipo_produto=?"
-				+ " where id = ?";
+				+ " where id_produto = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, produto.getNomeProduto());
@@ -93,7 +93,7 @@ public class ProdutoDAO {
 
 	public Produto buscaPorId(int id) {
 		Connection conexao = FabricaDeConexao.getConnection();
-		String sql = "select * from produto where id = ?;";
+		String sql = "select * from produto where id_produto = ?;";
 		Produto produto = null;
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);

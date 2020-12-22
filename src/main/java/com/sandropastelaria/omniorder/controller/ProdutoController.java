@@ -17,57 +17,50 @@ import com.sandropastelaria.omniorder.model.Produto;
 public class ProdutoController {
 
     
-    @GetMapping("/produto")
-	public String produtosTabela(Model modelo, @RequestParam(value = "operacao", required = false) String operacao) {
-    	if (operacao == "listar") {
-    		System.out.println("listar");
-    	} else if (operacao == "adicionar") {
-    		System.out.println("adicionar");
-    	} else if (operacao == "atualizar") {
-    		System.out.println("atualizar");
-    	}
-    	
+    @GetMapping("/produto-listagem")
+	public String produtosTabela(Model modelo) {
 		ProdutoDAO dao = new ProdutoDAO();
 		List<Produto> lista = dao.todos();
 		modelo.addAttribute("listaProdutos",lista);
-		
-		//modelo.addAttribute("listaDescricoes", TipoProduto.listaDescricoes());
-		return "produto"; 
+		return "produto/produto-listagem";
 	}
 	
-	@GetMapping("/cadastra-produto")
+	@GetMapping("/produto-adicionar")
 	public String exibeForm(Model modelo) {
-		modelo.addAttribute("produtoCriacao", new Produto());
-		return "form-produto";
+		modelo.addAttribute("produto", new Produto());
+		modelo.addAttribute("listaDescricoes", TipoProduto.listaDescricoes());
+		return "produto/produto-adicionar";
 	}
 	
-	@PostMapping("/cadastra-produto")
+	@PostMapping("/produto-adicionar")
 	public String processaForm(Produto produto) {
 		ProdutoDAO dao = new ProdutoDAO();
 		dao.inserir(produto);
-		return "redirect:/produto";
+		return "redirect:produto-listagem";
 	}
 	
 	@GetMapping("/excluir-produto")
 	public String excluirProduto(@RequestParam(value = "id", required = false) Integer p) {
 		ProdutoDAO dao = new ProdutoDAO();
 		dao.excluir(p);
-		return "redirect:/produto";
+		return "redirect:produto-listagem";
 	}
 	
-	@GetMapping("/editar-produto")
+	@GetMapping("/produto-atualizar")
 	public String editarProduto(Model modelo, @RequestParam(value = "id", required = false) Integer p) {
 		ProdutoDAO dao = new ProdutoDAO();
 		Produto produto = dao.buscaPorId(p);
-		modelo.addAttribute("produtoEdicao", produto);
-		return "form-produto";
+		System.out.println(produto);
+		modelo.addAttribute("produto", produto);
+		modelo.addAttribute("listaDescricoes", TipoProduto.listaDescricoes());
+		return "produto/produto-atualizar";
 	}
 	
-	@PostMapping("/editar-produto")
+	@PostMapping("/produto-atualizar")
 	public String editarProduto(Produto produto, @RequestParam(value = "id", required = false) Integer p) {
 		ProdutoDAO dao = new ProdutoDAO();
 		dao.atualizar(produto);
-		return "redirect:/produto";
+		return "redirect:produto-listagem";
 	}
     
 }

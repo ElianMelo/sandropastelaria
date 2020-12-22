@@ -27,10 +27,10 @@ public class Omniorder {
         return "funcionario";
     }
     
-    @RequestMapping("/produto")
+    /*@RequestMapping("/produto")
     public String controllerProduto() {
         return "produto";
-    }
+    }*/
     
     @RequestMapping("/cozinha")
     public String controllerCozinha() {

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="fragments/modelo :: modelo">
+<meta charset="utf-8">
+<body>
+	<div th:fragment="conteudo">
+		<div class="body-padding">	
+			<section class="general">
+				<div class="menu-bar">
+					<a href="/produto-listagem"><img src="./img/list.svg"/></a>
+					<a href="/produto-adicionar"><img src="./img/person.svg"/></a>
+				</div>
+				
+				<div class="table-data">
+                    <div class="table-register">
+                        <h2>Produtos Cadastrados</h2>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Quantidade</th>
+                                    <th>Tipo</th>
+                                    <th>Excluir</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="produto:${listaProdutos}" th:object="${produto}">
+                                  <td th:text="*{nomeProduto}"></td>
+                                  <td th:text="*{quantidade}"></td>
+                                  <td th:text="*{tipoProduto}"></td>
+                                  <td><a th:href="@{/excluir-produto(id=*{idProduto})}">excluir</a><br></td>
+								  <td><a th:href="@{/produto-atualizar(id=*{idProduto})}">editar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+				
+			</section>	
+		</div>
+	</div>
+</body>
+</html>

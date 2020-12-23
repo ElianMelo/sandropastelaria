@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="fragments/modelo :: modelo">
+<meta charset="utf-8">
+
+<body>
+	<div th:fragment="conteudo">
+		<div class="body-padding">
+			<section class="general">
+				<div class="menu-bar">
+					<a href="/funcionario-listagem"><i class="material-icons">format_align_justify</i></a>
+					<a href="/funcionario-adicionar"><i class="material-icons">add_box</i></a>
+				</div>
+
+				<div class="form-register">
+					<h2 class="title-section">Cadastro de Funcionário</h2>
+					<div class="form-user-register">
+						<form class="form" action="" method="POST" role="form">
+							<div class="form-group-general">
+								<div class="form-group columns-25">
+									<label for="nomeCompleto" class="col-form-label">Nome Completo</label>
+									<div>
+										<input type="text" class="form-control" id="nomeCompleto">
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="cpf" class="col-form-label">Senha</label>
+									<div>
+										<input type="text" class="form-control" id="senha">
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="cpf" class="col-form-label">CPF</label>
+									<div>
+										<input type="text" class="form-control" id="cpf">
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="cpf" class="col-form-label">RG</label>
+									<div>
+										<input type="text" class="form-control" id="rg">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group-general">
+								<div class="form-group columns-20">
+									<label for="nascimento" class="col-form-label">Data de nascimento</label>
+									<div>
+										<input type="date" class="form-control" id="nascimento"
+											style="text-align: center">
+									</div>
+								</div>
+
+								<div class="form-group columns-80">
+									<label for="filiacao" class="col-form-label">Filiação</label>
+									<div>
+										<input type="text" class="form-control" id="filiacao">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group-general">
+								<div class="form-group columns-50">
+									<label for="cargo" class="col-form-label">Cargo</label>
+									<div>
+										<input type="text" class="form-control" id="cargo">
+									</div>
+								</div>
+								<div class="form-group columns-50">
+									<label for="ctps" class="col-form-label">CTPS</label>
+									<div>
+										<input type="text" class="form-control" id="ctps">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group-general">
+								<div class="form-group columns-50">
+									<label for="jornadaSemanal" class="col-form-label">Jornada Semanal</label>
+									<div>
+										<input type="text" class="form-control" id="jornadaSemanal">
+									</div>
+								</div>
+								<div class="form-group columns-50">
+									<label for="remuneracao" class="col-form-label">Remuneração</label>
+									<div>
+										<input type="text" class="form-control" id="remuneracao">
+									</div>
+								</div>
+							</div>
+
+							<button type="submit" class="btn btn-primary my-3">Cadastrar</button>
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+
+</html>

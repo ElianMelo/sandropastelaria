@@ -15,6 +15,10 @@ img {
 	max-width: 100%;
 }
 
+.logo-menu {
+	width: 70px;
+}
+
 .form {
 	padding: 0 24px;
 }
@@ -44,6 +48,7 @@ td, th {
 }
 
 .general {
+	border: 1px solid black;
 	display: flex;
 	flex-flow: row wrap;
 	height: calc(100vh - 56px);
@@ -65,9 +70,35 @@ div > p {
 }
 
 .table-register {
-	overflow: scroll;
-	margin: 12px 12px 0;
+	margin: 12px 12px;
+	max-height: 87%;
+	overflow-y: scroll;
 	background-color: #fff;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #eee;
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+}
+
+::-webkit-scrollbar-corner {
+	background-color: rgba(0,0,0,.05);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0,0,0,.05);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0,0,0,.075);
 }
 
 .form-user-register {
@@ -81,7 +112,8 @@ div > p {
 	background-color: #472907;
 }
 
-.menu-bar p {
+.menu-bar a {
+	display: block;
 	text-align: center;
 }
 
@@ -89,11 +121,10 @@ div > p {
 	color: #fff;
 }
 
-.menu-bar p:hover {
+.menu-bar a:hover {
 	cursor: pointer;
 }
 
- /* Anima��o de bounce do menu lateral */
  .animation-bounce {
 	animation-name: bounce;
 	animation-duration: 0.3s; 
@@ -159,6 +190,15 @@ button[type="submit"]:hover {
 /* Estilos da seção de registros */
 .table-data {
 	width: calc(100% - 55px);
+	max-height: 100%;
+}
+
+.table-data i {
+	color: #000;
+}
+
+.table-data .icon-delete > i {
+	color: red;
 }
 
 /* Estilos da seção de cadastro */
@@ -303,8 +343,7 @@ button[type="submit"]:hover {
 @media (min-width: 992px) {
 	.table-register {
 		width: 98%;
-		overflow: visible;
-		margin: 12px auto 0;
+		margin: 12 auto 0px;
 	}
 	
 	.form-user-register {
@@ -343,5 +382,9 @@ button[type="submit"]:hover {
 	
 	.order {
 		width: 24%;
+	}
+
+	.logo-menu {
+		width: 50px;
 	}
 }

@@ -74,7 +74,7 @@ div > p {
 
 .table-register {
 	margin: 12px 12px;
-	max-height: 87%;
+	max-height: calc(100% - 62px);
 	overflow-y: scroll;
 	background-color: #fff;
 }
@@ -221,7 +221,7 @@ button[type="submit"]:hover {
 
 /* Estilos dos cards de pedidos */
 .cards-auto {
-	max-height: 87%;
+	max-height: calc(100% - 62px);
 	overflow-y: auto;
 }
 
@@ -376,7 +376,7 @@ button[type="submit"]:hover {
 @media (min-width: 992px) {
 	.table-register {
 		width: 98%;
-		margin: 12px auto 0px;
+		/* margin: 12px auto 0px; */
 	}
 
 	.tables {

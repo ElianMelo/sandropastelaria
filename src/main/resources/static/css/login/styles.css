@@ -1,29 +1,101 @@
-.login-externo {
-    margin: auto;
-    display: flex;
-	height: calc(100vh - 56px);
-	width: calc(100vw - 55px);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&display=swap');
+
+/* 472907, ffc107 */
+
+body {
+	font-family: Montserrat, sans-serif;
+	font-size: 16px;
 }
 
-.login-interno {
-    padding: 30px 60px !important;
-    width: 400px;
-    border: 2px solid #472907;
-    border-radius: 40px !important;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-.login-btndiv {
-	display: flex;
-    flex-direction: row-reverse;
+.box-login {
+	width: 100%;
+	height: 100vh;
+	padding: 32px;
+	background-color: #fff;
 }
 
-.login-text {
-	color: #472907;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 10px 0px 20px 0px;
-    text-align: center;
+.box-login .logo {
+	width: 150px;
+	display: block;
+	margin: 0 auto;
+}
+
+.box-login .field {
+	position: relative;
+	margin-top: 24px;
+}
+
+.field div {
+	position: absolute;
+	top: 8px;
+	left: 12px;
+}
+
+.box-login .field label {
+	font-size: 16px;
+	font-weight: 500;
+	position: absolute;
+	top: 7px;
+	left: 48px;
+	transition: all 0.5s;
+}
+
+.box-login input {
+	padding-left: 48px;
+}
+
+.box-login input:focus {
+	box-shadow: none !important;
+}
+
+.box-login input:focus + label, 
+.box-login input:valid + label {
+	background-color: #fff;
+	font-size: 14px;
+	padding: 0 4px;
+	top: -12px;
+}
+
+.box-login button {
+	background-color: #ffc107;
+	color: #fff;
+	font-weight: 600;
+}
+
+.password-inval {
+	margin-top: 0;
+	margin-bottom: 24px;
+}
+
+.password-inval p {
+	margin-bottom: 0;
+	font-size: 12px;
+	color: red;
+}
+
+.box-login > hr {
+	margin-top: 24px;
+}
+
+@media (min-width: 992px) {
+	body {
+		background-color: #472907 !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100vh;
+	}
+
+	.box-login {
+		width: 400px;
+		height: 480px;
+		border-radius: 20px;
+	}
 }

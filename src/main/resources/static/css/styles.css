@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&display=swap');
 
+html {
+	font-size: 1rem;
+}
+
 * {
 	font-family: Montserrat, sans-serif;
 	margin: 0;
@@ -13,6 +17,10 @@ li.nav-item {
 
 img {
 	max-width: 100%;
+}
+
+.logo-menu {
+	width: 70px;
 }
 
 .form {
@@ -65,9 +73,35 @@ div > p {
 }
 
 .table-register {
-	overflow: scroll;
-	margin: 12px 12px 0;
+	margin: 12px 12px;
+	max-height: calc(100% - 62px);
+	overflow-y: scroll;
 	background-color: #fff;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #eee;
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+}
+
+::-webkit-scrollbar-corner {
+	background-color: rgba(0,0,0,.05);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0,0,0,.05);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0,0,0,.075);
 }
 
 .form-user-register {
@@ -78,16 +112,22 @@ div > p {
 .menu-bar {
 	width: 55px;
 	padding: 10px;
-	background-color: #8b6634;
+	background-color: #472907;
 }
 
-.menu-bar img {
+.menu-bar a {
 	display: block;
-	margin: 0 auto;	
-	padding-bottom: 16px;
-	width: 28px;
+	text-align: center;
 }
- /* Anima��o de bounce do menu lateral */
+
+.menu-bar i {
+	color: #fff;
+}
+
+.menu-bar a:hover {
+	cursor: pointer;
+}
+
  .animation-bounce {
 	animation-name: bounce;
 	animation-duration: 0.3s; 
@@ -100,12 +140,7 @@ div > p {
   100% { transform: translateY(0px); }	
 }
 
-
-.menu-bar img:hover {
-	cursor: pointer;
-}
-
-button[type="submit"] {
+button[type="submit"], .button-form {
 	background-color: #472907;
 	border-color: #472907;
 }
@@ -156,8 +191,22 @@ button[type="submit"]:hover {
 
 
 /* Estilos da seção de registros */
+.table-manager {
+	width: 100%;
+	max-height: 100%;
+}
+
 .table-data {
 	width: calc(100% - 55px);
+	max-height: 100%;
+}
+
+.table-data i {
+	color: #000;
+}
+
+.table-data .icon-delete > i {
+	color: red;
 }
 
 /* Estilos da seção de cadastro */
@@ -171,6 +220,11 @@ button[type="submit"]:hover {
 }
 
 /* Estilos dos cards de pedidos */
+.cards-auto {
+	max-height: calc(100% - 62px);
+	overflow-y: auto;
+}
+
 .cards-order {
 	display: flex;
 	flex-flow: wrap row;
@@ -195,7 +249,6 @@ button[type="submit"]:hover {
 	background-color: #ffc107;
 }
 
-
 .ball-header {
 	width: 90px;
 	height: 90px;
@@ -205,6 +258,27 @@ button[type="submit"]:hover {
 	top: 40px;
 	background-color: #fff;
 	box-shadow: 0px 0px 11px -2px #000000;
+}
+
+.ball-edit {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  text-align: center;
+}
+
+.ball-edit a {
+	display: inline-block;
+}
+
+.ball-edit i {
+	display: inline-block;
+	margin-top: 2.5px;
+	color: #ffc107;
 }
 
 .ball-header p {
@@ -302,8 +376,12 @@ button[type="submit"]:hover {
 @media (min-width: 992px) {
 	.table-register {
 		width: 98%;
-		overflow: visible;
-		margin: 12px auto 0;
+		/* margin: 12px auto 0px; */
+	}
+
+	.tables {
+		width: 100%;
+		margin: 12px auto 0px;
 	}
 	
 	.form-user-register {
@@ -342,5 +420,9 @@ button[type="submit"]:hover {
 	
 	.order {
 		width: 24%;
+	}
+
+	.logo-menu {
+		width: 50px;
 	}
 }

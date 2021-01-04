@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="fragments/modelo :: modelo">
+<meta charset="utf-8">
+
+<body>
+	<div th:fragment="conteudo">
+		<div class="body-padding">
+			<section class="general">
+				<div class="menu-bar">
+					<a href="/funcionario-listagem"><i class="material-icons">format_align_justify</i></a>
+					<a href="/funcionario-adicionar"><i class="material-icons">add_box</i></a>
+				</div>
+
+				<div class="form-register">
+					<h2 class="title-section">Cadastro de Funcionário</h2>
+					<div class="form-user-register">
+						<form class="form" method="POST" role="form" th:object="${funcionario}">
+							<div class="form-group-general">
+								<div class="form-group columns-25">
+									<label for="nomeCompleto" class="col-form-label">Nome Completo</label>
+									<div>
+										<input th:field="*{nome}" type="text" class="form-control" id="nomeCompleto" required>
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="cpf" class="col-form-label">Senha</label>
+									<div>
+										<input th:field="*{senha}" type="text" class="form-control" id="senha" required>
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="cpf" class="col-form-label">CPF</label>
+									<div>
+										<input th:field="*{cpf}" type="text" class="form-control" id="cpf" required>
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="cpf" class="col-form-label">RG</label>
+									<div>
+										<input th:field="*{rg}" type="text" class="form-control" id="rg" required>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group-general">
+								<div class="form-group columns-20">
+									<label for="nascimento" class="col-form-label">Data de nascimento</label>
+									<div>
+										<input th:field="*{dataNascimento}" type="date" class="form-control" id="nascimento" style="text-align: center" required>
+									</div>
+								</div>
+
+								<div class="form-group columns-80">
+									<label for="filiacao" class="col-form-label">Filiação</label>
+									<div>
+										<input th:field="*{filiacao}" type="text" class="form-control" id="filiacao" required>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group-general">
+								<div class="form-group columns-50">
+									<label for="cargo" class="col-form-label">Cargo</label>
+									<div>
+										<select class="form-control" th:field="*{cargo}" id="cargo" required>
+											<option th:each="descricao:${listaCargo}" th:value="${descricao}" th:text="${descricao}"></option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="ctps" class="col-form-label">CTPS Número</label>
+									<div>
+										<input th:field="*{ctpsNum}" type="text" class="form-control" id="ctpsNum" required>
+									</div>
+								</div>
+								<div class="form-group columns-25">
+									<label for="ctps" class="col-form-label">CTPS Série</label>
+									<div>
+										<input th:field="*{ctpsSerie}" type="text" class="form-control" id="ctpsSerie" required>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group-general">
+								<div class="form-group columns-50">
+									<label for="jornadaSemanal" class="col-form-label">Jornada Semanal</label>
+									<div>
+										<input th:field="*{jornadaSemanal}" type="text" class="form-control" id="jornadaSemanal" required>
+									</div>
+								</div>
+								<div class="form-group columns-50">
+									<label for="remuneracao" class="col-form-label">Remuneração</label>
+									<div>
+										<input th:field="*{remuneracao}" type="text" class="form-control" id="remuneracao" required>
+									</div>
+								</div>
+							</div>
+
+							<button type="submit" class="btn btn-primary my-3">Cadastrar</button>
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+
+</html>

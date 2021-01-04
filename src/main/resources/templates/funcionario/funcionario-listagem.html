@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="fragments/modelo :: modelo">
+<meta charset="utf-8">
+
+<body>
+	<div th:fragment="conteudo">
+		<div class="body-padding">
+			<section class="general">
+				<div class="menu-bar">
+					<a href="/funcionario-listagem"><i class="material-icons">format_align_justify</i></a>
+					<a href="/funcionario-adicionar"><i class="material-icons">add_box</i></a>
+				</div>
+
+				<div class="table-data">
+					<h2 class="title-section">Funcionários Cadastrados</h2>
+					<div class="table-register">
+						<table class="table table-hover table-striped mb-0">
+							<thead>
+								<tr>
+									<th>Nome Completo</th>
+									<th>CPF</th>
+									<th>Cargo</th>
+									<th>Jornada Semanal</th>
+									<th>Remuneração</th>
+									<th>Excluir</th>
+									<th>Editar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="funcionario : ${funcionarios}" th:object="${funcionario}">
+									<td th:text="*{nome}"></td>
+									<td th:text="*{cpf}"></td>
+									<td th:text="*{cargo}"></td>
+									<td><span th:text="*{jornadaSemanal}"></span>h</td>
+									<td>R$ <span th:text="*{remuneracao}"></span></td>
+									<td>
+										<a th:href="@{/funcionario-excluir(id=*{idFuncionario})}" class="icon-delete">
+											<i class="material-icons">delete</i>
+										</a>
+									</td>
+									<td>
+										<a th:href="@{/funcionario-atualizar(id=*{idFuncionario})}">
+											<i class="material-icons">edit</i>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+
+</html>

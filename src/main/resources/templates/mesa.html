@@ -2,19 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" th:include="fragments/modelo :: modelo">
 <meta charset="utf-8">
 <body>
+
 	<div th:fragment="conteudo">
-		<head>
-				<link rel="stylesheet" href="./css/mesa/style.css">
+
+	<head>
+		<link rel="stylesheet" href="./css/mesa/style.css">
 		<script src="./js/mesa/function.js"></script>
-		</head>
-	
-	
+	</head>
+
 		<div class="body-padding">
 			<section class="general">
-				<div class="table-data">
+				<div class="table-manager">
+					<h2 class="title-section">Gerenciamento de mesas</h2>
 					<div class="table-register">
-						<h2>Gerenciamento de mesas</h2>
-						<table class="table table-hover">
+						<table class="table table-hover table-striped mb-0">
 							<thead>
 								<tr>
 									<th>Número</th>
@@ -162,10 +163,10 @@
 						</table>
 					</div>
 				</div>
-				
-			</section>	
+			</section>
 		</div>
 	</div>
-	
+
 </body>
+
 </html>

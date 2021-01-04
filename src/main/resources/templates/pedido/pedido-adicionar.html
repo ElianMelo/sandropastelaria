@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="fragments/modelo :: modelo">
+<meta charset="utf-8">
+
+<body>
+	<div th:fragment="conteudo">
+		<div class="general">
+			<div class="menu-bar">
+				<a href="/pedido-listagem"><i class="material-icons">format_align_justify</i></a>
+				<a href="/pedido-adicionar"><i class="material-icons">add_box</i></a>
+			</div>
+
+			<div class="form-register">
+				<h2 class="title-section">Cadastro de Pedidos</h2>
+				<div class="form-user-register">
+					<form class="form" action="" method="POST" role="form">
+						<div class="form-group-general">
+							<div class="form-group columns-25">
+								<label for="numeroMesa" class="col-form-label">Número da
+									Mesa</label>
+								<div>
+									<select class="form-control" id="numeroMesa">
+										<option>selecione uma mesa</option>
+										<option>01</option>
+										<option>02</option>
+										<option>03</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group-general">
+							<div class="form-group columns-30">
+								<label for="prodComida" class="col-form-label">Produto -
+									Comida</label>
+								<div>
+									<select class="form-control" id="prodComida">
+										<option>selecione um produto - comida</option>
+										<option>Pastel de Queijo</option>
+										<option>Pastel de Frango</option>
+										<option>Pastel de Chocolate</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group columns-10">
+								<label for="quantidadeComida" class="col-form-label">Quantidade</label>
+								<div>
+									<input type="text" class="form-control" id="quantidadeComida">
+								</div>
+							</div>
+
+							<div class="form-group columns-10">
+								<label id="adicionar" class="col-form-label">adicionar</label>
+								<div>
+									<button class="btn btn-primary w-100 text-center button-form">Adicionar</button>
+								</div>
+							</div>
+
+							<div class="form-group columns-30">
+								<label for="prodBebida" class="col-form-label">Produto -
+									Bebida</label>
+								<div>
+									<select class="form-control" id="prodBebida">
+										<option>selecione um produto - bebida</option>
+										<option>Coca Cola</option>
+										<option>Guaraná Mineiro</option>
+										<option>Suco de Laranja</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group columns-10">
+								<label for="quantidadeBebida" class="col-form-label">Quantidade</label>
+								<div>
+									<input type="text" class="form-control" id="quantidadeBebida">
+								</div>
+							</div>
+
+							<div class="form-group columns-10">
+								<label id="adicionar" class="col-form-label">adicionar</label>
+								<div>
+									<button class="btn btn-primary w-100 text-center button-form">Adicionar</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group-general">
+							<table class="table table-hover columns-50">
+								<thead>
+									<tr>
+										<th>Produto - Comida</th>
+										<th>Quantidade</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Pastel de Frango</td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td>Pastel de Chocolate</td>
+										<td>1</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<table class="table table-hover columns-50">
+								<thead>
+									<tr>
+										<th>Produto - Bebida</th>
+										<th>Quantidade</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Coca Cola lata 350ml</td>
+										<td>1</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<button type="submit" class="btn btn-primary my-3">Cadastrar
+							Pedido</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

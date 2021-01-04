@@ -50,7 +50,6 @@ public class ProdutoController {
 	public String editarProduto(Model modelo, @RequestParam(value = "id", required = false) Integer p) {
 		ProdutoDAO dao = new ProdutoDAO();
 		Produto produto = dao.buscaPorId(p);
-		System.out.println(produto);
 		modelo.addAttribute("produto", produto);
 		modelo.addAttribute("listaDescricoes", TipoProduto.listaDescricoes());
 		return "produto/produto-atualizar";

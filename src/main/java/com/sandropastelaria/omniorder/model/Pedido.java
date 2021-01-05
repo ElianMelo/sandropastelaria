@@ -1,5 +1,8 @@
 package com.sandropastelaria.omniorder.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.sandropastelaria.omniorder.enums.EstadoCozinha;
 import com.sandropastelaria.omniorder.enums.EstadoPedido;
 
@@ -8,6 +11,7 @@ public class Pedido {
     private EstadoPedido estadoPedido;
     private EstadoCozinha estadoCozinha;
     private Integer idMesa;
+    private List<ItemPedido> itens = new ArrayList<>();
 
     public Pedido() {
         super();
@@ -58,6 +62,14 @@ public class Pedido {
         this.idMesa = idMesa;
     }
 
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void addItem(ItemPedido item) {
+        this.itens.add(item);
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -82,5 +94,5 @@ public class Pedido {
             return false;
         return true;
     }
-    
+
 }

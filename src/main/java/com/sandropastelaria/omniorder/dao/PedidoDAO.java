@@ -18,11 +18,15 @@ public class PedidoDAO {
 		String sql = "insert into pedido" + "(id_pedido, estado_pedido, estado_cozinha, id_mesa)"
 				+ " values (?,?,?,?)";
 		try {
-            stmt = conexao.prepareStatement(sql);
+			stmt = conexao.prepareStatement(sql);
+			
 			stmt.setInt(1, pedido.getIdPedido());
 			stmt.setString(2, pedido.getEstadoPedido());
             stmt.setString(3, pedido.getEstadoCozinha());
-            stmt.setInt(4, pedido.getIdMesa());
+			stmt.setInt(4, pedido.getIdMesa());
+			
+			
+
 			stmt.execute();
 			stmt.close();
 			conexao.close();
@@ -109,7 +113,9 @@ public class PedidoDAO {
 			pedido = new Pedido(idPedido, estadoPedido, estadoCozinha, idMesa);
 			stmt.close();
 			conexao.close();
-		} catch (SQLException e) {
+		} catch (
+
+		SQLException e) {
 			System.out.println(e.getMessage());
 		}
 		return pedido;

@@ -13,17 +13,18 @@
 			<div class="form-register">
 				<h2 class="title-section">Cadastro de Pedidos</h2>
 				<div class="form-user-register">
-					<form class="form" action="" method="POST" role="form">
+					<form class="form" action="" method="POST" role="form" th:object="${pedido}">
+
 						<div class="form-group-general">
 							<div class="form-group columns-25">
 								<label for="numeroMesa" class="col-form-label">Número da
 									Mesa</label>
 								<div>
-									<select class="form-control" id="numeroMesa">
-										<option>selecione uma mesa</option>
-										<option>01</option>
-										<option>02</option>
-										<option>03</option>
+									<select class="form-control" th:field="*{idMesa}" id="numeroMesa" >
+										<!--<option>selecione uma mesa</option>-->
+										<option th:value="${'1'}" th:text="${'1'}">1</option>
+										<option th:value="${'2'}" th:text="${'2'}">2</option>
+										<option th:value="${'3'}" th:text="${'3'}">3</option>
 									</select>
 								</div>
 							</div>
@@ -53,7 +54,7 @@
 							<div class="form-group columns-10">
 								<label id="adicionar" class="col-form-label">adicionar</label>
 								<div>
-									<button class="btn btn-primary w-100 text-center button-form">Adicionar</button>
+									<button class="btn btn-primary w-100 text-center button-form" type="submit" name="addItem">Adicionar</button>
 								</div>
 							</div>
 

@@ -82,12 +82,13 @@ select * from mesa;
 
 
 create table pedido (
-    id_pedido int AUTO_INCREMENT, 
-	estado enum('FINALIZADO', 'PREPARANDO', 'AGUARDANDO'),
+    id_pedido int AUTO_INCREMENT,
+	estado_pedido enum('ABERTO', 'FECHADO'),
+    estado_cozinha enum('PREPARANDO', 'FINALIZADO'),
     id_mesa int, 
     constraint fk_idMesa foreign key (id_mesa) references mesa(id_mesa),
     primary key(id_pedido)
-); 
+);
 select * from pedido;
 
 insert into pedido(estado, id_mesa)

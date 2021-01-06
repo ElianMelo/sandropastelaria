@@ -11,10 +11,11 @@ public class Pedido {
     private EstadoPedido estadoPedido;
     private EstadoCozinha estadoCozinha;
     private Integer idMesa;
-    private List<ItemPedido> itens = new ArrayList<>();
+    private List<ItemPedido> itens;
 
     public Pedido() {
         super();
+        this.itens = new ArrayList<>();
     }
 
     public Pedido(Integer idPedido, String estadoPedido, String estadoCozinha) {
@@ -66,6 +67,10 @@ public class Pedido {
         return itens;
     }
 
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
+    }
+
     public void addItem(ItemPedido item) {
         this.itens.add(item);
     }
@@ -93,6 +98,12 @@ public class Pedido {
         } else if (!idPedido.equals(other.idPedido))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido [estadoCozinha=" + estadoCozinha + ", estadoPedido=" + estadoPedido + ", idMesa=" + idMesa
+                + ", idPedido=" + idPedido + ", itens=" + itens + "]";
     }
 
 }

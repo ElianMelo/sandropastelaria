@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum EstadoCozinha {
-	ABERTO("Preparando"), 
-	FECHADO("Finalizado");
+	PREPARANDO("Preparando"), 
+	FINALIZADO("Finalizado");
 
 	private String descricao;
 

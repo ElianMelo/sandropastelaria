@@ -8,26 +8,66 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sandropastelaria.omniorder.config.FabricaDeConexao;
+import com.sandropastelaria.omniorder.enums.EstadoCozinha;
+import com.sandropastelaria.omniorder.enums.EstadoPedido;
+import com.sandropastelaria.omniorder.enums.TipoProduto;
+import com.sandropastelaria.omniorder.model.ItemPedido;
+import com.sandropastelaria.omniorder.model.Mesa;
 import com.sandropastelaria.omniorder.model.Pedido;
+import com.sandropastelaria.omniorder.model.Produto;
 
 public class PedidoDAO {
 
-	public void inserir(Pedido pedido) {
+	public void inserir(Pedido pedido, List<ItemPedido> itens) {
 		Connection conexao = FabricaDeConexao.getConnection();
 		PreparedStatement stmt;
-		String sql = "insert into pedido" + "(id_pedido, estado_pedido, estado_cozinha, id_mesa)"
-				+ " values (?,?,?,?)";
+		Integer idPedido;
+		String sql = "insert into pedido" + "(estado_pedido, estado_cozinha, id_mesa)"
+				+ " values (?,?,?)";
 		try {
-			stmt = conexao.prepareStatement(sql);
+			stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			stmt.setInt(1, pedido.getIdPedido());
-			stmt.setString(2, pedido.getEstadoPedido());
-            stmt.setString(3, pedido.getEstadoCozinha());
-			stmt.setInt(4, pedido.getIdMesa());
+			stmt.setString(1, EstadoPedido.ABERTO.getDescricao());
+            stmt.setString(2, EstadoCozinha.PREPARANDO.getDescricao());
+			stmt.setInt(3, pedido.getIdMesa());
 			
-			
+			int affectedRows = stmt.executeUpdate();
 
-			stmt.execute();
+			if (affectedRows == 0) {
+				throw new SQLException("Falha na criação do pedido.");
+			}
+
+			try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+				if (generatedKeys.next()) {
+					idPedido = (int) generatedKeys.getLong(1);
+				} else {
+					throw new SQLException("Falha na criação do pedido.");
+				}
+			}
+			
+			Integer idMesa = pedido.getIdMesa();
+
+			// Inserir ItemPedido
+			ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
+			ProdutoDAO produtoDAO = new ProdutoDAO();
+			for(ItemPedido item : itens) {
+				itemPedidoDAO.inserir(new ItemPedido(idPedido, item.getIdProduto(), item.getQuantidade()));
+				// Muda Produto
+				Produto produto = produtoDAO.buscaPorId(item.getIdProduto());
+				if(!produto.getTipoProduto().equals(TipoProduto.PASTEL.getDescricao())) {
+					produto.setQuantidade(produto.getQuantidade() - item.getQuantidade());
+					if(produto.getQuantidade() < 0) {
+						throw new SQLException("Quantidade excedente em estoque.");
+					}
+				}
+				produtoDAO.atualizar(produto);
+			}
+
+			// Mudar EstadoMesa
+			MesaDAO mesaDAO = new MesaDAO();
+			Mesa mesa = new Mesa(idMesa, true, false);
+			mesaDAO.atualizar(mesa);
+
 			stmt.close();
 			conexao.close();
 		} catch (Exception e) {

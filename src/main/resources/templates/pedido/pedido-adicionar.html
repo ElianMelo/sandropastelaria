@@ -20,198 +20,56 @@
 								<label for="numeroMesa" class="col-form-label">Número da
 									Mesa</label>
 								<div>
-									<select class="form-control" th:field="*{idMesa}" id="numeroMesa" >
-										<!--<option>selecione uma mesa</option>-->
-										<option th:value="${'1'}" th:text="${'1'}">1</option>
-										<option th:value="${'2'}" th:text="${'2'}">2</option>
-										<option th:value="${'3'}" th:text="${'3'}">3</option>
+									<select class="form-control" th:field="*{idMesa}" id="numeroMesa" required>
+										<option th:each="mesa:${mesas}" th:value="${mesa.idMesa}" th:text="${mesa.idMesa}"></option>
 									</select>
 								</div>
 							</div>
 						</div>
 
-						<div class="form-group-general">
-							<div class="form-group columns-30">
-								<label for="prodComida" class="col-form-label">Produto -
-									Comida</label>
+						<div class="form-group-general" th:object="${item}">
+							<div class="form-group columns-50">
+								<label for="prodComida" class="col-form-label">Produto</label>
 								<div>
-									<select class="form-control" id="prodComida">
-										<option>selecione um produto - comida</option>
-										<option>Coxinha</option>
-										<option>Esfirra</option>
-										<option>Mini Pizza</option>
+									<select class="form-control" th:field="*{idProduto}" id="numeroMesa" required>
+										<option th:each="produto:${produtos}" th:value="${produto.idProduto}" th:text="${produto.nomeProduto}"></option>
 									</select>
 								</div>
 							</div>
 
-							<div class="form-group columns-10">
-								<label for="quantidadeComida" class="col-form-label">Quantidade</label>
+							<div class="form-group columns-25">
+								<label for="quantidadeComida" class="col-form-label" >Quantidade</label>
 								<div>
-									<input type="text" class="form-control" id="quantidadeComida">
+									<input th:field="*{quantidade}" type="text" class="form-control" id="quantidadeComida">
 								</div>
 							</div>
 
-							<div class="form-group columns-10">
+							<div class="form-group columns-25">
 								<label id="adicionar" class="col-form-label">adicionar</label>
 								<div>
 									<button class="btn btn-primary w-100 text-center button-form" type="submit" name="addItem">Adicionar</button>
 								</div>
 							</div>
-
-							<div class="form-group columns-30">
-								<label for="prodBebida" class="col-form-label">Produto -
-									Bebida</label>
-								<div>
-									<select class="form-control" id="prodBebida">
-										<option>selecione um produto - bebida</option>
-										<option>Coca Cola</option>
-										<option>Guaraná Mineiro</option>
-										<option>Suco de Laranja</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="form-group columns-10">
-								<label for="quantidadeBebida" class="col-form-label">Quantidade</label>
-								<div>
-									<input type="text" class="form-control" id="quantidadeBebida">
-								</div>
-							</div>
-
-							<div class="form-group columns-10">
-								<label id="adicionar" class="col-form-label">adicionar</label>
-								<div>
-									<button class="btn btn-primary w-100 text-center button-form">Adicionar</button>
-								</div>
-							</div>
 						</div>
 
 						<div class="form-group-general">
-							<table class="table table-hover columns-50">
+							<table class="table table-hover columns-100">
 								<thead>
 									<tr>
-										<th>Produto - Comida</th>
+										<th>Produto</th>
 										<th>Quantidade</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<td>Mini Pizza</td>
-										<td>2</td>
-									</tr>
-									<tr>
-										<td>Coxinha</td>
-										<td>1</td>
-									</tr>
-								</tbody>
-							</table>
 
-							<table class="table table-hover columns-50">
-								<thead>
-									<tr>
-										<th>Produto - Bebida</th>
-										<th>Quantidade</th>
-									</tr>
-								</thead>
 								<tbody>
-									<tr>
-										<td>Coca Cola lata 350ml</td>
-										<td>1</td>
+									<tr th:each="item : ${pedido.itens}" th:object="${item}">
+										<td th:text="${produtos.get(item.idProduto-1).getNomeProduto()}"></td>
+										<td th:text="*{quantidade}"></td>
 									</tr>
 								</tbody>
+
 							</table>
                         </div>
-                        <div class="form-group-general">
-							<div class="form-group columns-30">
-								<label for="prodComida" class="col-form-label">Produto -
-									Pastel</label>
-								<div>
-									<select class="form-control" id="prodComida">
-										<option>selecione um produto - pastel</option>
-										<option>Pastel de Queijo</option>
-										<option>Pastel de Frango</option>
-										<option>Pastel de Chocolate</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="form-group columns-10">
-								<label for="quantidadeComida" class="col-form-label">Quantidade</label>
-								<div>
-									<input type="text" class="form-control" id="quantidadeComida">
-								</div>
-							</div>
-
-							<div class="form-group columns-10">
-								<label id="adicionar" class="col-form-label">adicionar</label>
-								<div>
-									<button class="btn btn-primary w-100 text-center button-form">Adicionar</button>
-								</div>
-							</div>
-
-							<div class="form-group columns-30">
-								<label for="prodBebida" class="col-form-label">Produto -
-									Doce</label>
-								<div>
-									<select class="form-control" id="prodBebida">
-										<option>selecione um produto - doce</option>
-										<option>Pirulito Big Big</option>
-										<option>MashMallow</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="form-group columns-10">
-								<label for="quantidadeBebida" class="col-form-label">Quantidade</label>
-								<div>
-									<input type="text" class="form-control" id="quantidadeBebida">
-								</div>
-							</div>
-
-							<div class="form-group columns-10">
-								<label id="adicionar" class="col-form-label">adicionar</label>
-								<div>
-									<button class="btn btn-primary w-100 text-center button-form">Adicionar</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group-general">
-							<table class="table table-hover columns-50">
-								<thead>
-									<tr>
-										<th>Produto - Pastel</th>
-										<th>Quantidade</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Pastel de Frango</td>
-										<td>2</td>
-									</tr>
-									<tr>
-										<td>Pastel de Chocolate</td>
-										<td>1</td>
-									</tr>
-								</tbody>
-							</table>
-
-							<table class="table table-hover columns-50">
-								<thead>
-									<tr>
-										<th>Produto - Doce</th>
-										<th>Quantidade</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Pirulito Big Big</td>
-										<td>5</td>
-									</tr>
-								</tbody>
-							</table>
-              
-						</div>
 
 						<button type="submit" class="btn btn-primary my-3">Cadastrar
 							Pedido</button>

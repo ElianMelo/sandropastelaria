@@ -31,6 +31,9 @@
       	<a href="/"><img src="./img/logout.png" style="height: 40px;" alt="Logout"></a>
       </li>
     </ul>
+    <form th:action="@{/logout}" method="post">
+      <input type="submit" value="Sair" />
+    </form>
   </div>
 </nav>
 </body>

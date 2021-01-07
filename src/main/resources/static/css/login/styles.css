@@ -83,6 +83,12 @@ body {
 	margin-top: 24px;
 }
 
+.message {
+	color: red;
+	font-size: 14px;
+	text-align: center;
+}
+
 @media (min-width: 992px) {
 	body {
 		background-color: #472907 !important;
@@ -95,7 +101,7 @@ body {
 
 	.box-login {
 		width: 400px;
-		height: 480px;
+		height: 520px;
 		border-radius: 20px;
 	}
 }

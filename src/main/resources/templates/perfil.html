@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="fragments/modelo :: modelo">
+<meta charset="utf-8">
+
+<body>
+	<div th:fragment="conteudo">
+    <div class="general-home">
+      <div class="external-card">
+        <div class="image-card">
+          <i class="large material-icons">account_circle</i>
+        </div>
+        <div class="content-card" th:object="${funcionario}">
+          <hr>
+          <h1 th:text="*{nome}"></h1>
+          <table>
+            <tr>
+              <td>Cargo</td>
+              <td th:text="*{cargo}"></td>
+            </tr>
+            <tr>
+              <td>CPF</td>
+              <td th:text="*{cpf}"></td>
+            </tr>
+            <tr>
+              <td>RG</td>
+              <td th:text="*{rg}"></td>
+            </tr>
+            <tr>
+              <td>CTPS - Número</td>
+              <td th:text="*{ctpsNum}"></td>
+            </tr>
+            <tr>
+              <td>CTPS - Série</td>
+              <td th:text="*{ctpsSerie}"></td>
+            </tr>
+          </table>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

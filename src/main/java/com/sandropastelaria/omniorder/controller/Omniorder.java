@@ -38,7 +38,7 @@ public class Omniorder {
     	
     	if (funcionarioAcessado != null) {
     		session.setAttribute("usuarioLogado", funcionarioAcessado);
-    		return "redirect:bem-vindo";
+    		return "redirect:perfil";
     	} else {
     		redAttributes.addFlashAttribute("mensagemAcesso", "Login e/ou senha inválidos.");
     		return "redirect:/";
@@ -52,9 +52,16 @@ public class Omniorder {
     	return "redirect:/";
     }
     
-    @GetMapping("/bem-vindo")
-    public String bemVindo() {
-    	return "bem-vindo";
+    @GetMapping("/perfil")
+    public String bemVindo(Model modelo, HttpSession session) {
+			Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
+			
+			if (usuarioLogado != null) {
+				modelo.addAttribute("funcionario", usuarioLogado);
+				return "perfil";
+			} else {
+				return "redirect:/";
+			}
     }
     
     @GetMapping("/403")
@@ -86,7 +93,7 @@ public class Omniorder {
 		if (usuarioLogado != null) {
 			String cargo = usuarioLogado.getCargo();
 			
-			if (cargo.equals("Administrador")) {
+			if (cargo.equals("Administrador") || cargo.equals("Cozinheiro")) {
 				return "cozinha";
 			} else {
 				return "error/403";

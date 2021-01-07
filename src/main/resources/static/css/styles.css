@@ -360,6 +360,77 @@ button[type="submit"]:hover {
 	display: none;
 }
 
+.general-home {
+	width: 100%;
+	height: calc(100vh - 56px);
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.external-card {
+	width: 100%;
+	background-color: #ffc107;
+}
+
+.image-card {
+	margin: 16px 0 0;
+	text-align: center;
+}
+
+.image-card i {
+	font-size: 120px;
+	color: #fff;
+}
+
+.content-card {
+	width: calc(100% - 66px);
+	margin: 0 32px 32px;
+	border-radius: 20px;
+	padding: 24px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.content-card h1 {
+	font-weight: 900;
+	color: #472907;
+}
+
+.content-card table {
+	width: 100%;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+.table tr {
+	border: 0 !important;
+}
+
+.content-card table td {
+	padding: 5px 10px;
+}
+
+.logout {
+	color: #fff !important;
+	margin: 0 10px 0 auto;
+	display: block;
+	border-radius: 3px;
+	border: 0;
+}
+
+.logout i {
+	line-height: 38px;
+	display: block;
+	width: 32px;
+	height: 38px;
+}
+
+.logout:hover {
+	background-color: #D07208 !important;
+}
+
 /* Animações */
 @keyframes sectionActivated {
 	from { transform: translateY(100%) }
@@ -370,6 +441,10 @@ button[type="submit"]:hover {
 @media (min-width: 536px) {
 	.order {
 		width: 49%;
+	}
+
+	.external-card {
+		height: 100%;
 	}
 }
 
@@ -425,4 +500,15 @@ button[type="submit"]:hover {
 	.logo-menu {
 		width: 50px;
 	}
+
+	.external-card {
+		width: 800px;
+		height: 550px;
+		border-radius: 20px;
+	}
+
+	.content-card table {
+		width: 100%;
+	}
+
 }

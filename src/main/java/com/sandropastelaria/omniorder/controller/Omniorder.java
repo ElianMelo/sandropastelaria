@@ -65,8 +65,13 @@ public class Omniorder {
     }
     
     @GetMapping("/403")
-    public String error403() {
-    	return "error/403";
+    public String error403(HttpSession session) {
+    	Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
+    	
+    	if (usuarioLogado != null) {
+    		return "error/403";
+    	}
+    	return "redirect:/";
     }
     
     @RequestMapping("/mesa")

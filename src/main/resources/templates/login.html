@@ -27,10 +27,10 @@
       <hr />
       <form action="/" method="post" name="form" th:object="${funcionario}">
         <div>
-          <p th:text="${mensagemAcesso}" th:if="${mensagemAcesso != null}" class="message"></p>
+          <p th:text="${mensagemAcesso}" th:if="${mensagemAcesso != null}" class="message inval"></p>
         </div>
         <div>
-          <p th:text="${messagemLogout}" th:if="${messagemLogout != null}" class="message"></p>
+          <p th:text="${messagemLogout}" th:if="${messagemLogout != null}" class="message logout"></p>
         </div>
         <div th:if="${param.logout}">
           <div class="alert alert-info">You have been logged out.</div>
@@ -40,7 +40,7 @@
           <div>
             <i class="material-icons">person</i>
           </div>
-          <input th:field="*{ctpsNum}" id="username" type="text" class="form-control" required />
+          <input th:field="*{ctpsNum}" id="username" type="number" class="form-control" required />
           <label for="username">Usuário</label>
         </div>
         <div class="form-group field">

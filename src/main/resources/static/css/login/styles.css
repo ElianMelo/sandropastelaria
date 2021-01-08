@@ -76,7 +76,7 @@ body {
 .password-inval p {
 	margin-bottom: 0;
 	font-size: 12px;
-	color: red;
+	color: #212529;
 }
 
 .box-login > hr {
@@ -84,9 +84,22 @@ body {
 }
 
 .message {
-	color: red;
 	font-size: 14px;
 	text-align: center;
+}
+
+.inval {
+	color: red;
+}
+
+.logout {
+	color: #5D592E;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 @media (min-width: 992px) {

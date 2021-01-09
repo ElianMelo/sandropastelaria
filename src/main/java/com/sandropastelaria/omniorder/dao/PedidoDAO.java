@@ -1,12 +1,10 @@
 package com.sandropastelaria.omniorder.dao;
 
-import java.security.Timestamp;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class PedidoDAO {
 			
 			stmt.setString(1, EstadoPedido.ABERTO.getDescricao());
 			stmt.setString(2, EstadoCozinha.PREPARANDO.getDescricao());
-			java.sql.Timestamp date = new java.sql.Timestamp(System.currentTimeMillis());
+			Timestamp date = new Timestamp(System.currentTimeMillis());
 			stmt.setTimestamp(3, date);
 			stmt.setInt(4, pedido.getIdMesa());
 			
@@ -92,7 +90,7 @@ public class PedidoDAO {
 				Integer idPedido = retorno.getInt("id_pedido");
 				String estadoPedido = retorno.getString("estado_pedido");
 				String estadoCozinha = retorno.getString("estado_cozinha");
-				java.sql.Timestamp horaInicio = retorno.getTimestamp("hora_inicio");
+				Timestamp horaInicio = retorno.getTimestamp("hora_inicio");
 				Integer idMesa = retorno.getInt("id_mesa");
 				
 				Pedido pedido = new Pedido(idPedido, estadoPedido, estadoCozinha, horaInicio, idMesa);
@@ -120,7 +118,7 @@ public class PedidoDAO {
 				Integer idPedido = retorno.getInt("id_pedido");
 				String estadoPedido = retorno.getString("estado_pedido");
 				String estadoCozinha = retorno.getString("estado_cozinha");
-				java.sql.Timestamp horaInicio = retorno.getTimestamp("hora_inicio");
+				Timestamp horaInicio = retorno.getTimestamp("hora_inicio");
 				Integer idMesa = retorno.getInt("id_mesa");
 				
 				Pedido pedido = new Pedido(idPedido, estadoPedido, estadoCozinha, horaInicio, idMesa);
@@ -148,7 +146,7 @@ public class PedidoDAO {
 				Integer idPedido = retorno.getInt("id_pedido");
 				String estadoPedido = retorno.getString("estado_pedido");
 				String estadoCozinha = retorno.getString("estado_cozinha");
-				java.sql.Timestamp horaInicio = retorno.getTimestamp("hora_inicio");
+				Timestamp horaInicio = retorno.getTimestamp("hora_inicio");
 				Integer idMesa = retorno.getInt("id_mesa");
 				
 				Pedido pedido = new Pedido(idPedido, estadoPedido, estadoCozinha, horaInicio, idMesa);
@@ -189,7 +187,7 @@ public class PedidoDAO {
 			stmt.setString(1, pedido.getEstadoPedido());
 			stmt.setString(2, pedido.getEstadoCozinha());
 			stmt.setInt(3, pedido.getIdMesa());
-			java.sql.Timestamp date = new java.sql.Timestamp(System.currentTimeMillis());
+			Timestamp date = new Timestamp(System.currentTimeMillis());
 			stmt.setTimestamp(4, date);
 			stmt.setInt(5, pedido.getIdPedido());
 
@@ -267,7 +265,7 @@ public class PedidoDAO {
 			Integer idPedido = retorno.getInt("id_pedido");
 			String estadoPedido = retorno.getString("estado_pedido");
 			String estadoCozinha = retorno.getString("estado_cozinha");
-			java.sql.Timestamp horaInicio = retorno.getTimestamp("hora_inicio");
+			Timestamp horaInicio = retorno.getTimestamp("hora_inicio");
             Integer idMesa = retorno.getInt("id_mesa");
 			pedido = new Pedido(idPedido, estadoPedido, estadoCozinha, horaInicio, idMesa);
 			stmt.close();

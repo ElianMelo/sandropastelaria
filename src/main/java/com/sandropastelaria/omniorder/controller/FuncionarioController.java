@@ -18,7 +18,7 @@ import com.sandropastelaria.omniorder.model.Funcionario;
 public class FuncionarioController {
 
 	@GetMapping("/funcionario-listagem")
-	public String funcionariosTabela(Model modelo, HttpSession session) {
+	public String listarFuncionarios(Model modelo, HttpSession session) {
 		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
 		
 		if (usuarioLogado != null) {
@@ -38,7 +38,7 @@ public class FuncionarioController {
 	}
 	
 	@GetMapping("/funcionario-adicionar")
-	public String exibeForm(Model modelo, HttpSession session) {
+	public String adicionarFuncionaio(Model modelo, HttpSession session) {
 		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
 		
 		if (usuarioLogado != null) {

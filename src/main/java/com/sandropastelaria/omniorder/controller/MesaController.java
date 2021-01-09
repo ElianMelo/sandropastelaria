@@ -38,7 +38,7 @@ public class MesaController {
     }	
 
     @GetMapping("/alterar-mesa")
-	public String excluirFuncionario(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "operacao", required = false) String operacao) {
+	public String alterarMesa(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "operacao", required = false) String operacao) {
         MesaDAO mesaDAO = new MesaDAO();
         Mesa mesa = mesaDAO.buscaPorId(id);
 

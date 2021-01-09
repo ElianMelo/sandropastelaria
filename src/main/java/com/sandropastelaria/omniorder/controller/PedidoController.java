@@ -166,7 +166,7 @@ public class PedidoController {
 
 		pedidoDao.inserir(pedido, itens);
 		itens = new ArrayList<>();
-		return "pedido/pedido-listagem";
+		return "redirect:pedido-listagem";
 	}
 
 	// Prepara ambiente pra atualizar

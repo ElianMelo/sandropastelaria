@@ -121,7 +121,7 @@ public class ItemPedidoDAO {
 	public List<ItemPedido> buscaPorIdPedido(int id) {
 		List<ItemPedido> lista = new ArrayList<ItemPedido>();
 		Connection conexao = FabricaDeConexao.getConnection();
-		String sql = "select * from item_pedido where id_pedido = ?;";
+		String sql = "select i.*, p.nome_produto from item_pedido i inner join produto p on p.id_produto = i.id_produto where id_pedido = ?;";
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, id);
@@ -131,8 +131,9 @@ public class ItemPedidoDAO {
 				Integer idPedido = retorno.getInt("id_pedido");
 				Integer idProduto = retorno.getInt("id_produto");
 				Integer quantidade = retorno.getInt("quantidade");
+				String nomeProduto = retorno.getString("nome_produto");
 				
-				ItemPedido item = new ItemPedido(idPedido, idProduto, quantidade);
+				ItemPedido item = new ItemPedido(idPedido, idProduto, quantidade, nomeProduto);
 				lista.add(item);
 			}
 			retorno.close();

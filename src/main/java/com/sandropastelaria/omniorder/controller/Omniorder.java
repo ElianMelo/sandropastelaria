@@ -20,9 +20,7 @@ public class Omniorder {
     	Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
 		
 		if (usuarioLogado != null) {
-			session.invalidate();
-			redAttributes.addFlashAttribute("messagemLogout", "Sessão encerrada!");
-			return "redirect:/";
+			return "redirect:/perfil";
 		} else {
 			modelo.addAttribute("funcionario", new Funcionario());
 			return "login";

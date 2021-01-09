@@ -189,6 +189,9 @@ button[type="submit"]:hover {
 	width: 100%;
 }
 
+.items:hover {
+	cursor: pointer;
+}
 
 /* Estilos da seção de registros */
 .table-manager {
@@ -267,8 +270,14 @@ button[type="submit"]:hover {
   background-color: #fff;
   position: absolute;
   top: 16px;
-  right: 24px;
+  right: 18px;
   text-align: center;
+}
+
+.reverse-ball {
+	/* top: 52px; */
+	top: 16px;
+	left: 18px;
 }
 
 .ball-edit a {
@@ -327,25 +336,44 @@ button[type="submit"]:hover {
 	color: #ffc107;
 }
 
-.outer-info a, .outer-info a:visited {
-	display: block;
+.info_buttons {
+	text-align: center;
+}
+
+.info_buttons a, .info_buttons a:visited {
+	display: inline-block;
 	margin-top: 16px;
-	font-size: 18px;
+	font-size: 14px;
 	font-weight: 600;
 	text-align: center;
 	text-decoration: none;
 	border-radius: 10px;
 	color: #fff;
-	padding: 8px 0;
+	padding: 8px 14px;
 	border: 1px solid transparent;
-	background-color: #ffc107;
 	transition: all 0.5s;
 }
 
-.outer-info a:hover {
+.link-yellow {
+	background-color: #ffc107;
+}
+
+.link-yellow-reverse {
+	color: #ffc107 !important;
+	border: 1px solid #ffc107 !important;
 	background-color: #fff;
-	border: 1px solid #ffc107;
-	color: #ffc107;
+}
+
+.link-yellow:hover {
+	background-color: #fff;
+	border: 1px solid #ffc107 !important;
+	color: #ffc107 !important;
+}
+
+.link-yellow-reverse:hover {
+	background-color: #ffc107;
+	border: 1px solid transparent;
+	color: #fff !important;
 }
 
 /* Estilos de estado */
@@ -416,6 +444,7 @@ button[type="submit"]:hover {
 	color: #fff !important;
 	margin: 0 10px 0 auto;
 	display: block;
+	padding: 0 8px;
 	border-radius: 3px;
 	border: 0;
 }

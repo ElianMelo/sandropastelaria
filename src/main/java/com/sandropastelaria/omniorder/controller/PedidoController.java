@@ -1,22 +1,9 @@
 package com.sandropastelaria.omniorder.controller;
 
-import com.sandropastelaria.omniorder.model.Pedido;
-import com.sandropastelaria.omniorder.model.Produto;
-
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
-import com.sandropastelaria.omniorder.dao.ItemPedidoDAO;
-import com.sandropastelaria.omniorder.dao.MesaDAO;
-import com.sandropastelaria.omniorder.dao.PedidoDAO;
-import com.sandropastelaria.omniorder.dao.ProdutoDAO;
-import com.sandropastelaria.omniorder.enums.TipoProduto;
-import com.sandropastelaria.omniorder.model.ItemPedido;
-import com.sandropastelaria.omniorder.model.Mesa;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sandropastelaria.omniorder.dao.ItemPedidoDAO;
+import com.sandropastelaria.omniorder.dao.MesaDAO;
+import com.sandropastelaria.omniorder.dao.PedidoDAO;
+import com.sandropastelaria.omniorder.dao.ProdutoDAO;
+import com.sandropastelaria.omniorder.enums.TipoProduto;
+import com.sandropastelaria.omniorder.model.Funcionario;
+import com.sandropastelaria.omniorder.model.ItemPedido;
+import com.sandropastelaria.omniorder.model.Mesa;
+import com.sandropastelaria.omniorder.model.Pedido;
+import com.sandropastelaria.omniorder.model.Produto;
+
 @Controller
 public class PedidoController {
 
@@ -34,43 +32,67 @@ public class PedidoController {
 	
 	// Listagem de Pedidos
 	@GetMapping("/pedido-listagem")
-	public String funcionariosTabela(Model modelo) {
-		PedidoDAO pedidoDAO = new PedidoDAO();
-		ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
-		List<Pedido> pedidos = pedidoDAO.todosAberto();
+	public String funcionariosTabela(Model modelo, HttpSession session) {
+		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
+		
+		if (usuarioLogado != null) {
+			String cargo = usuarioLogado.getCargo();
+			
+			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
+				PedidoDAO pedidoDAO = new PedidoDAO();
+				ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
+				List<Pedido> pedidos = pedidoDAO.todosAberto();
 
-		for(int i = 0; i < pedidos.size(); i++) {
-			List<ItemPedido> itensPedido = itemPedidoDAO.buscaPorIdPedido(pedidos.get(i).getIdPedido());
-			pedidos.get(i).setItens(itensPedido);
+				for(int i = 0; i < pedidos.size(); i++) {
+					List<ItemPedido> itensPedido = itemPedidoDAO.buscaPorIdPedido(pedidos.get(i).getIdPedido());
+					pedidos.get(i).setItens(itensPedido);
+				}
+
+				modelo.addAttribute("pedidos", pedidos);
+				return "pedido/pedido-listagem";
+			} else {
+				return "error/403";
+			}
+		} else {
+			return "redirect:/";
 		}
-
-		modelo.addAttribute("pedidos", pedidos);
-		return "pedido/pedido-listagem";
 	}
 	
 	// Prepara ambiente adicionar pedido
 	@GetMapping("/pedido-adicionar")
-	public String exibeForm(Model modelo) {
-		MesaDAO mesaDAO = new MesaDAO();
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		List<Mesa> mesas = mesaDAO.todos();
-		List<Produto> produtos = produtoDAO.todos();
-		List<Mesa> mesasFiltradas = new ArrayList<>();
+	public String exibeForm(Model modelo, HttpSession session) {
+		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
+		
+		if (usuarioLogado != null) {
+			String cargo = usuarioLogado.getCargo();
+			
+			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
+				MesaDAO mesaDAO = new MesaDAO();
+				ProdutoDAO produtoDAO = new ProdutoDAO();
+				List<Mesa> mesas = mesaDAO.todos();
+				List<Produto> produtos = produtoDAO.todos();
+				List<Mesa> mesasFiltradas = new ArrayList<>();
 
-		Pedido pedido = new Pedido();
-		pedido.setItens(itens);
+				Pedido pedido = new Pedido();
+				pedido.setItens(itens);
 
-		for(Mesa mesa : mesas) {
-			if(mesa.isLivre()) {
-				mesasFiltradas.add(mesa);
+				for(Mesa mesa : mesas) {
+					if(mesa.isLivre()) {
+						mesasFiltradas.add(mesa);
+					}
+				}
+
+				modelo.addAttribute("pedido", pedido);
+				modelo.addAttribute("item", new ItemPedido());
+				modelo.addAttribute("mesas", mesasFiltradas);
+				modelo.addAttribute("produtos", produtos);
+				return "pedido/pedido-adicionar";
+			} else {
+				return "error/403";
 			}
+		} else {
+			return "redirect:/";
 		}
-
-		modelo.addAttribute("pedido", pedido);
-		modelo.addAttribute("item", new ItemPedido());
-		modelo.addAttribute("mesas", mesasFiltradas);
-		modelo.addAttribute("produtos", produtos);
-		return "pedido/pedido-adicionar";
 	}
 
 	// Adiciona item ao adicionado
@@ -149,24 +171,36 @@ public class PedidoController {
 
 	// Prepara ambiente pra atualizar
 	@GetMapping("/pedido-atualizar")
-	public String editaPedidoForm(Model modelo, @RequestParam(value = "id", required = false) Integer id) {
-		PedidoDAO pedidoDAO = new PedidoDAO();
-		MesaDAO mesaDAO = new MesaDAO();
-		ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		List<Mesa> mesas = mesaDAO.todos();
-		List<Produto> produtos = produtoDAO.todos();
+	public String editaPedidoForm(Model modelo, HttpSession session, @RequestParam(value = "id", required = false) Integer id) {
+		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
+		
+		if (usuarioLogado != null) {
+			String cargo = usuarioLogado.getCargo();
+			
+			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
+				PedidoDAO pedidoDAO = new PedidoDAO();
+				MesaDAO mesaDAO = new MesaDAO();
+				ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
+				ProdutoDAO produtoDAO = new ProdutoDAO();
+				List<Mesa> mesas = mesaDAO.todos();
+				List<Produto> produtos = produtoDAO.todos();
 
-		Pedido pedido = pedidoDAO.buscaPorId(id);
-		List<ItemPedido> itensPedidoAtualizar = itemPedidoDAO.buscaPorIdPedido(id);
-		itensAtualizar = itensPedidoAtualizar;
-		pedido.setItens(itensPedidoAtualizar);
+				Pedido pedido = pedidoDAO.buscaPorId(id);
+				List<ItemPedido> itensPedidoAtualizar = itemPedidoDAO.buscaPorIdPedido(id);
+				itensAtualizar = itensPedidoAtualizar;
+				pedido.setItens(itensPedidoAtualizar);
 
-		modelo.addAttribute("pedido", pedido);
-		modelo.addAttribute("item", new ItemPedido());
-		modelo.addAttribute("mesas", mesas);
-		modelo.addAttribute("produtos", produtos);
-		return "pedido/pedido-atualizar";
+				modelo.addAttribute("pedido", pedido);
+				modelo.addAttribute("item", new ItemPedido());
+				modelo.addAttribute("mesas", mesas);
+				modelo.addAttribute("produtos", produtos);
+				return "pedido/pedido-atualizar";
+			} else {
+				return "error/403";
+			}
+		} else {
+			return "redirect:/";
+		}
 	}
 
 	// Adiciona item ao adicionado

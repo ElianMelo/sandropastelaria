@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sandropastelaria.omniorder.dao.LoginDAO;
@@ -74,37 +73,4 @@ public class Omniorder {
     	return "redirect:/";
     }
     
-    @RequestMapping("/mesa")
-    public String controllerMesa(HttpSession session) {
-		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
-		
-		if (usuarioLogado != null) {
-			String cargo = usuarioLogado.getCargo();
-			
-			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
-				return "mesa";
-			} else {
-				return "error/403";
-			}
-		} else {
-			return "redirect:/";
-		}
-    }	
-    
-    @RequestMapping("/cozinha")
-    public String controllerCozinha(HttpSession session) {
-		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
-		
-		if (usuarioLogado != null) {
-			String cargo = usuarioLogado.getCargo();
-			
-			if (cargo.equals("Administrador") || cargo.equals("Cozinheiro")) {
-				return "cozinha";
-			} else {
-				return "error/403";
-			}
-		} else {
-			return "redirect:/";
-		}
-    }
 }

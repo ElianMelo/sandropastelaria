@@ -81,7 +81,7 @@ select * from mesa;
 
 create table pedido (
     id_pedido int AUTO_INCREMENT, 
-	estado_pedido enum('Aberto', 'Fechado'),
+	  estado_pedido enum('Aberto', 'Fechado'),
     estado_cozinha enum('Preparando', 'Finalizado'),
     hora_inicio DATETIME,
     hora_fim DATETIME,

@@ -3,8 +3,8 @@ use sandro_pastelaria;
 
 CREATE TABLE Funcionario (
 	id_funcionario INT AUTO_INCREMENT,
-    nome_completo VARCHAR(100) NOT NULL,
-    senha VARCHAR(70) NOT NULL,
+    nome_completo VARCHAR(64) NOT NULL,
+    senha VARCHAR(8) NOT NULL,
     cpf BIGINT(11) NOT NULL,
     rg VARCHAR(24) NOT NULL,
     ctps_num INT(7) NOT NULL,
@@ -33,13 +33,12 @@ INSERT INTO Funcionario(nome_completo, senha, cpf, rg, ctps_num, ctps_serie, dat
   ('Isabela Leticia Carneiro', 'n0x1234@', 13148424159, 'MG-94.550.452', 8484532, 509, '1976-05-11', 'Manoela Chris Carneiro e Igor Souza Junior', 'Cozinheiro', 40, 1850.86);
 
 create table Produto(
-	nome_produto varchar(100) NOT NULL,
+	nome_produto varchar(30) NOT NULL,
     quantidade int(3),
     tipo_produto enum('Matéria prima', 'Comida', 'Doce', 'Bebida', 'Pastel'),
     id_produto int(8) NOT NULL AUTO_INCREMENT,
     primary key(id_produto)
 );
-
 insert into produto(nome_produto, quantidade, tipo_produto) 
 	values ("Coca-cola 1,5l", 39, "Bebida"),
     ("Coca-cola 250ml", 53, "Bebida"),
@@ -80,33 +79,24 @@ insert into mesa(limpa, livre)
     
 select * from mesa;
 
-
 create table pedido (
-    id_pedido int AUTO_INCREMENT,
-	estado_pedido enum('ABERTO', 'FECHADO'),
-    estado_cozinha enum('PREPARANDO', 'FINALIZADO'),
+    id_pedido int AUTO_INCREMENT, 
+	  estado_pedido enum('Aberto', 'Fechado'),
+    estado_cozinha enum('Preparando', 'Finalizado'),
+    hora_inicio DATETIME,
+    hora_fim DATETIME,
     id_mesa int, 
     constraint fk_idMesa foreign key (id_mesa) references mesa(id_mesa),
     primary key(id_pedido)
 );
 select * from pedido;
 
-insert into pedido(estado, id_mesa)
-	values ('AGUARDANDO', 1),
-    ('PREPARANDO', 11),
-    ('AGUARDANDO', 9),
-    ('FINALIZADO', 5),
-    ('FINALIZADO', 4);
-
-insert into pedido(estado)
-	values ('FINALIZADO'),
-    ('PREPARANDO'),
-    ('FINALIZADO'),
-    ('FINALIZADO'),
-    ('AGUARDANDO'),
-    ('PREPARANDO');
-    
-select * from pedido;
+insert into pedido(estado_pedido, estado_cozinha, hora_inicio, hora_fim, id_mesa)
+    values ('Aberto', 'Preparando', '2021-01-10 20:53:44', '2021-01-10 21:30:31' ,1),
+    ('Fechado', 'Finalizado', '2021-01-10 20:44:53', '2021-01-10 21:54:31', 11),
+    ('Aberto', 'Preparando', '2021-01-09 19:10:31', '2021-01-10 20:01:11', 9),
+    ('Fechado', 'Finalizado', '2021-01-10 21:15:27', '2021-01-10 21:59:21', 5),
+    ('Fechado', 'Finalizado', '2021-01-10 21:02:49', '2021-01-10 21:33:40', 4);
 
 CREATE TABLE item_pedido (
 	id_pedido INT NOT NULL ,

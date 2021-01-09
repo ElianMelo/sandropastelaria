@@ -24,6 +24,12 @@ public class Funcionario {
 		super();
 	}
 	
+	public Funcionario(Integer ctpsNum, String senha) {
+		super();
+		this.ctpsNum = ctpsNum;
+		this.senha = senha;
+	}
+	
 	public Funcionario(String nome, String senha, Long cpf, String rg, Integer ctpsNum, Integer ctpsSerie,
 			Date dataNascimento, String filiacao, Cargo cargo, Integer jornadaSemanal, Float remuneracao) {
 		super();

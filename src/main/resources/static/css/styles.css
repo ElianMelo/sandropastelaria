@@ -189,6 +189,9 @@ button[type="submit"]:hover {
 	width: 100%;
 }
 
+.items:hover {
+	cursor: pointer;
+}
 
 /* Estilos da seção de registros */
 .table-manager {
@@ -267,8 +270,14 @@ button[type="submit"]:hover {
   background-color: #fff;
   position: absolute;
   top: 16px;
-  right: 24px;
+  right: 18px;
   text-align: center;
+}
+
+.reverse-ball {
+	/* top: 52px; */
+	top: 16px;
+	left: 18px;
 }
 
 .ball-edit a {
@@ -327,25 +336,44 @@ button[type="submit"]:hover {
 	color: #ffc107;
 }
 
-.outer-info a, .outer-info a:visited {
-	display: block;
+.info_buttons {
+	text-align: center;
+}
+
+.info_buttons a, .info_buttons a:visited {
+	display: inline-block;
 	margin-top: 16px;
-	font-size: 18px;
+	font-size: 14px;
 	font-weight: 600;
 	text-align: center;
 	text-decoration: none;
 	border-radius: 10px;
 	color: #fff;
-	padding: 8px 0;
+	padding: 8px 14px;
 	border: 1px solid transparent;
-	background-color: #ffc107;
 	transition: all 0.5s;
 }
 
-.outer-info a:hover {
+.link-yellow {
+	background-color: #ffc107;
+}
+
+.link-yellow-reverse {
+	color: #ffc107 !important;
+	border: 1px solid #ffc107 !important;
 	background-color: #fff;
-	border: 1px solid #ffc107;
-	color: #ffc107;
+}
+
+.link-yellow:hover {
+	background-color: #fff;
+	border: 1px solid #ffc107 !important;
+	color: #ffc107 !important;
+}
+
+.link-yellow-reverse:hover {
+	background-color: #ffc107;
+	border: 1px solid transparent;
+	color: #fff !important;
 }
 
 /* Estilos de estado */
@@ -360,6 +388,78 @@ button[type="submit"]:hover {
 	display: none;
 }
 
+.general-home {
+	width: 100%;
+	height: calc(100vh - 56px);
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.external-card {
+	width: 100%;
+	background-color: #ffc107;
+}
+
+.image-card {
+	margin: 16px 0 0;
+	text-align: center;
+}
+
+.image-card i {
+	font-size: 120px;
+	color: #fff;
+}
+
+.content-card {
+	width: calc(100% - 66px);
+	margin: 0 32px 32px;
+	border-radius: 20px;
+	padding: 24px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.content-card h1 {
+	font-weight: 900;
+	color: #472907;
+}
+
+.content-card table {
+	width: 100%;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+.table tr {
+	border: 0 !important;
+}
+
+.content-card table td {
+	padding: 5px 10px;
+}
+
+.logout {
+	color: #fff !important;
+	margin: 0 10px 0 auto;
+	display: block;
+	padding: 0 8px;
+	border-radius: 3px;
+	border: 0;
+}
+
+.logout i {
+	line-height: 38px;
+	display: block;
+	width: 32px;
+	height: 38px;
+}
+
+.logout:hover {
+	background-color: #D07208 !important;
+}
+
 /* Animações */
 @keyframes sectionActivated {
 	from { transform: translateY(100%) }
@@ -370,6 +470,10 @@ button[type="submit"]:hover {
 @media (min-width: 536px) {
 	.order {
 		width: 49%;
+	}
+
+	.external-card {
+		height: 100%;
 	}
 }
 
@@ -425,4 +529,15 @@ button[type="submit"]:hover {
 	.logo-menu {
 		width: 50px;
 	}
+
+	.external-card {
+		width: 750px;
+		height: 550px;
+		border-radius: 20px;
+	}
+
+	.content-card table {
+		width: 100%;
+	}
+
 }

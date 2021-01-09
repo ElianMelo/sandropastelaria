@@ -4,6 +4,7 @@ public class ItemPedido {
     private Integer idPedido;
     private Integer idProduto;
     private Integer quantidade;
+    private String nomeProduto;
 
     public ItemPedido() {
         super();
@@ -13,6 +14,13 @@ public class ItemPedido {
 		this.idPedido = idPedido;
 		this.idProduto = idProduto;
 		this.quantidade = quantidade;
+	}
+    
+    public ItemPedido(Integer idPedido, Integer idProduto, Integer quantidade, String nomeProduto) {
+		this.idPedido = idPedido;
+		this.idProduto = idProduto;
+		this.quantidade = quantidade;
+		this.nomeProduto = nomeProduto;
 	}
 
 	public Integer getIdPedido() {
@@ -37,6 +45,14 @@ public class ItemPedido {
 	
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	public String getNomeProduto() {
+		return nomeProduto;
+	}
+
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
 	@Override
@@ -74,5 +90,6 @@ public class ItemPedido {
 	public String toString() {
 		return "ItemPedido [idPedido=" + idPedido + ", idProduto=" + idProduto + ", quantidade=" + quantidade + "]";
 	}
+
     
 }

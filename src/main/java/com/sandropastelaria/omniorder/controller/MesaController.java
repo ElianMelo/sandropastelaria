@@ -2,8 +2,7 @@ package com.sandropastelaria.omniorder.controller;
 
 import java.util.List;
 
-import com.sandropastelaria.omniorder.dao.MesaDAO;
-import com.sandropastelaria.omniorder.model.Mesa;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,15 +10,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sandropastelaria.omniorder.dao.MesaDAO;
+import com.sandropastelaria.omniorder.model.Funcionario;
+import com.sandropastelaria.omniorder.model.Mesa;
+
 @Controller
 public class MesaController {
 
     @RequestMapping("/mesa")
-    public String controllerMesa(Model modelo) {
-        MesaDAO mesaDAO = new MesaDAO();
-        List<Mesa> mesas = mesaDAO.todos();
-        modelo.addAttribute("mesas", mesas);
-        return "mesa";
+    public String controllerMesa(Model modelo, HttpSession session) {
+    	Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
+		
+		if (usuarioLogado != null) {
+			String cargo = usuarioLogado.getCargo();
+			
+			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
+				MesaDAO mesaDAO = new MesaDAO();
+		        List<Mesa> mesas = mesaDAO.todos();
+		        modelo.addAttribute("mesas", mesas);
+		        return "mesa";
+			} else {
+				return "error/403";
+			}
+		} else {
+			return "redirect:/";
+		}
     }	
 
     @GetMapping("/alterar-mesa")

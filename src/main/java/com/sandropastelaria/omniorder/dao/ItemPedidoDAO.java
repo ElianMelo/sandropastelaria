@@ -64,7 +64,7 @@ public class ItemPedidoDAO {
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, idPedido);
-			stmt.setInt(1, idProduto);
+			stmt.setInt(2, idProduto);
 			stmt.execute();
 			stmt.close();
 			conexao.close();

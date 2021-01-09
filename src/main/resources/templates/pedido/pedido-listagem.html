@@ -17,7 +17,7 @@
 					<div class="box" th:each="pedido : ${pedidos}">
 						<div class="header-box"></div>
 						<div class="ball-edit reverse-ball">
-							<a th:href="@{/}">
+							<a th:href="@{/excluir-pedido(id=*{pedido.idPedido})}">
 								<i class="material-icons">clear</i>
 							</a>
 						</div>
@@ -75,7 +75,7 @@
 
 							<div class="info_buttons">
 								<a class="link-yellow" th:href="@{/abrir-cozinha(id=*{pedido.idPedido})}">Encaminhar</a>
-								<a class="link-yellow-reverse" th:href="@{/}">Fechar</a>
+								<a class="link-yellow-reverse" th:href="@{/fechar-pedido(id=*{pedido.idPedido})}">Fechar</a>
 							</div>
 						</div>
 					</div>

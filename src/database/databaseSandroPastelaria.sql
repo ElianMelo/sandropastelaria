@@ -102,8 +102,8 @@ CREATE TABLE item_pedido (
 	id_pedido INT NOT NULL ,
 	id_produto INT NOT NULL,
     quantidade INT NOT NULL,
-	constraint fk_idPedido FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
-    constraint fk_idProduto FOREIGN KEY (id_produto) REFERENCES produto(id_produto)
+	constraint fk_idPedido FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido) ON DELETE CASCADE,
+    constraint fk_idProduto FOREIGN KEY (id_produto) REFERENCES produto(id_produto) ON DELETE CASCADE
 );
 
 INSERT INTO item_pedido(id_pedido, id_produto, quantidade) VALUES

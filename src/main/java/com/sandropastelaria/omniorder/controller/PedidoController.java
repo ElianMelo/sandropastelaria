@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mysql.cj.log.Log;
 import com.sandropastelaria.omniorder.dao.ItemPedidoDAO;
 import com.sandropastelaria.omniorder.dao.MesaDAO;
 import com.sandropastelaria.omniorder.dao.PedidoDAO;
 import com.sandropastelaria.omniorder.dao.ProdutoDAO;
+import com.sandropastelaria.omniorder.enums.EstadoPedido;
 import com.sandropastelaria.omniorder.enums.TipoProduto;
 import com.sandropastelaria.omniorder.model.Funcionario;
 import com.sandropastelaria.omniorder.model.ItemPedido;
@@ -32,7 +34,7 @@ public class PedidoController {
 	
 	// Listagem de Pedidos
 	@GetMapping("/pedido-listagem")
-	public String funcionariosTabela(Model modelo, HttpSession session) {
+	public String listaPedidos(Model modelo, HttpSession session) {
 		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
 		
 		if (usuarioLogado != null) {
@@ -148,6 +150,36 @@ public class PedidoController {
 		return "pedido/pedido-adicionar";
 	}
 
+	@GetMapping("/excluir-item")
+	public String removeItem(Model modelo, Pedido pedido, ItemPedido item, @RequestParam("id") Integer id) {
+		MesaDAO mesaDAO = new MesaDAO();
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+		List<Mesa> mesas = mesaDAO.todos();
+		List<Produto> produtos = produtoDAO.todos();
+		List<Mesa> mesasFiltradas = new ArrayList<>();
+
+		for(Mesa mesa : mesas) {
+			if(mesa.isLivre()) {
+				mesasFiltradas.add(mesa);
+			}
+		}
+		modelo.addAttribute("item", new ItemPedido());
+		modelo.addAttribute("mesas", mesasFiltradas);
+		modelo.addAttribute("produtos", produtos);
+	
+		
+		for(int i = 0; i < itens.size(); i++) {
+			if(itens.get(i).getIdProduto() == id) {
+				itens.remove(i);
+				break;
+			}
+		}
+
+		pedido.setItens(itens);
+		modelo.addAttribute("pedido", pedido);
+		return "redirect:pedido-adicionar";
+	}
+
 	// Adiciona um novo pedido
 	@RequestMapping(value = "/pedido-adicionar", method = RequestMethod.POST)
 	public String inserirPedido(Pedido pedido) {
@@ -249,6 +281,40 @@ public class PedidoController {
 		modelo.addAttribute("pedido", pedido);
 		return "pedido/pedido-atualizar";
 	}
+
+	@GetMapping("/excluir-item-atualizar")
+	public String removeItemAlterado(Model modelo, Pedido pedido, ItemPedido item, @RequestParam("id") Integer id, @RequestParam("idPedido") Integer idPedido) {
+		MesaDAO mesaDAO = new MesaDAO();
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+		List<Mesa> mesas = mesaDAO.todos();
+		List<Produto> produtos = produtoDAO.todos();
+		List<Mesa> mesasFiltradas = new ArrayList<>();
+
+		for(Mesa mesa : mesas) {
+			if(mesa.isLivre()) {
+				mesasFiltradas.add(mesa);
+			}
+		}
+		modelo.addAttribute("item", new ItemPedido());
+		modelo.addAttribute("mesas", mesasFiltradas);
+		modelo.addAttribute("produtos", produtos);
+	
+		
+		for(int i = 0; i < itensAtualizar.size(); i++) {
+			if(itensAtualizar.get(i).getIdProduto() == id) {
+				itensAtualizar.remove(i);
+				break;
+			}
+		}
+
+		ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
+		itemPedidoDAO.excluir(idPedido, id);
+
+		pedido.setItens(itensAtualizar);
+		modelo.addAttribute("pedido", pedido);
+		String resultado = "redirect:pedido-atualizar?id=" + idPedido;
+		return resultado;
+	}
 	
 	@PostMapping("/pedido-atualizar")
 	public String editaPedido(Pedido pedido) {
@@ -267,6 +333,24 @@ public class PedidoController {
 
 		pedidoDao.atualizar(pedido, itensAtualizar);
 		itensAtualizar = new ArrayList<>();
+		return "redirect:pedido-listagem";
+	}
+
+	@GetMapping("/fechar-pedido")
+	public String fecharPedido(@RequestParam(value = "id", required = false) Integer id) {
+        PedidoDAO pedidoDAO = new PedidoDAO();
+        Pedido pedido = pedidoDAO.buscaPorId(id);
+
+		pedido.setEstadoPedido(EstadoPedido.FECHADO.getDescricao());
+        pedidoDAO.atualizar(pedido);
+
+        return "redirect:pedido-listagem";
+	}
+
+	@GetMapping("/excluir-pedido")
+	public String excluirPedido(@RequestParam(value = "id", required = false) Integer id) {
+        PedidoDAO pedidoDAO = new PedidoDAO();
+		pedidoDAO.excluir(id);
 		return "redirect:pedido-listagem";
 	}
 

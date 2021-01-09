@@ -62,13 +62,20 @@
 									<tr>
 										<th>Produto</th>
 										<th>Quantidade</th>
+										<th>Excluir</th>
 									</tr>
 								</thead>
 
 								<tbody>
 									<tr th:each="item : ${pedido.itens}" th:object="${item}">
+										<!-- Alterar -->
 										<td th:text="${produtos.get(item.idProduto-1).getNomeProduto()}"></td>
 										<td th:text="*{quantidade}"></td>
+										<td>
+											<a th:href="@{/excluir-item-atualizar(id=*{idProduto},idPedido=*{idPedido})}" class="icon-delete">
+												<i class="material-icons">delete</i>
+											</a>
+										</td>
 									</tr>
 								</tbody>
 

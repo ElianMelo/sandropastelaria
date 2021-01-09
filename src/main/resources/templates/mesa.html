@@ -15,152 +15,46 @@
 				<div class="table-manager">
 					<h2 class="title-section">Gerenciamento de mesas</h2>
 					<div class="table-register">
-						<table class="table table-hover table-striped mb-0">
-							<thead>
-								<tr>
-									<th>Número</th>
-									<th>Status</th>
-									<th>Limpeza</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="numerosMesa">01</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">02</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">03</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">04</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">05</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">06</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">07</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">08</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">09</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">10</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">11</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">12</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">13</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">14</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-								<tr>
-									<td class="numerosMesa">15</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIVRE</button>
-									</td>
-									<td>
-										<button class="botoesMesa" onclick="alterarBotao(event)">LIMPA</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+						<form class="form" method="POST" role="form"></form>
+							<table class="table table-hover table-striped mb-0">
+								<thead>
+									<tr>
+										<th>Número</th>
+										<th>Status</th>
+										<th>Limpeza</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="mesa:${mesas}" th:object="${mesa}">
+										<td class="numerosMesa" th:text="${mesa.idMesa}"></td>
+										<td>
+											<a th:href="@{/alterar-mesa(id=*{idMesa}, operacao='livre')}">
+												<button 
+													class="botoesMesa" 
+													th:style=" 'background:'+ @{ ${ mesa.livre ? '#61c473' : '#db5855' } } " 
+													onclick="alterarBotao(event)" 
+													th:text="${mesa.livre ? 'LIVRE' : 'OCUPADA'}"												
+													>
+													LIVRE
+												</button>
+											</a>
+										</td>
+										<td>
+											<a th:href="@{/alterar-mesa(id=*{idMesa}, operacao='limpa')}">
+												<button 
+													class="botoesMesa" 
+													th:style=" 'background:'+ @{ ${ mesa.limpa ? '#61c473' : '#db5855' } } " 
+													onclick="alterarBotao(event)" 
+													th:text="${mesa.limpa ? 'LIMPA' : 'SUJA'}"
+													>
+													LIMPA
+												</button>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
 					</div>
 				</div>
 			</section>

@@ -1,5 +1,6 @@
 package com.sandropastelaria.omniorder.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mysql.cj.log.Log;
 import com.sandropastelaria.omniorder.dao.ItemPedidoDAO;
 import com.sandropastelaria.omniorder.dao.MesaDAO;
 import com.sandropastelaria.omniorder.dao.PedidoDAO;

@@ -1,6 +1,7 @@
 package com.sandropastelaria.omniorder.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.sandropastelaria.omniorder.enums.EstadoCozinha;
@@ -11,6 +12,8 @@ public class Pedido {
     private EstadoPedido estadoPedido;
     private EstadoCozinha estadoCozinha;
     private Integer idMesa;
+    private Date horaInicio;
+    private Date horaFim;
     private List<ItemPedido> itens;
 
     public Pedido() {
@@ -24,9 +27,10 @@ public class Pedido {
         this.estadoCozinha = EstadoCozinha.toEnum(estadoCozinha);
     }
 
-    public Pedido(Integer idPedido, String estadoPedido, String estadoCozinha, Integer idMesa) {
+    public Pedido(Integer idPedido, String estadoPedido, String estadoCozinha, Date horaInicio, Integer idMesa) {
         this.idPedido = idPedido;
         this.idMesa = idMesa;
+        this.horaInicio = horaInicio;
         this.estadoPedido = EstadoPedido.toEnum(estadoPedido);
         this.estadoCozinha = EstadoCozinha.toEnum(estadoCozinha);
     }
@@ -75,6 +79,22 @@ public class Pedido {
         this.itens.add(item);
     }
 
+    public Date getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(Date horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public Date getHoraFim() {
+        return horaFim;
+    }
+
+    public void setHoraFim(Date horaFim) {
+        this.horaFim = horaFim;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -102,8 +122,8 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido [estadoCozinha=" + estadoCozinha + ", estadoPedido=" + estadoPedido + ", idMesa=" + idMesa
-                + ", idPedido=" + idPedido + ", itens=" + itens + "]";
+        return "Pedido [estadoCozinha=" + estadoCozinha + ", estadoPedido=" + estadoPedido + ", horaInicio="
+                + horaInicio + ", idMesa=" + idMesa + ", idPedido=" + idPedido + ", itens=" + itens + "]";
     }
-
+    
 }

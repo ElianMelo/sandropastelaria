@@ -93,7 +93,32 @@ public class ItemPedidoDAO {
 		}
 	}
 
-	public List<ItemPedido> buscaPorId(int id) {
+	public ItemPedido buscaPorId(int idPedidoBusca, int idProdutoBusca) {
+		Connection conexao = FabricaDeConexao.getConnection();
+		String sql = "select * from item_pedido where id_pedido = ? and id_produto = ?;";
+		ItemPedido item = null;
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idPedidoBusca);
+			stmt.setInt(2, idProdutoBusca);
+			ResultSet retorno = stmt.executeQuery();
+
+			retorno.next();
+			
+			Integer idPedido = retorno.getInt("id_pedido");
+			Integer idProduto = retorno.getInt("id_produto");
+			Integer quantidade = retorno.getInt("quantidade");
+
+			item = new ItemPedido(idPedido, idProduto, quantidade);
+			stmt.close();
+			conexao.close();
+		} catch ( SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return item;
+	}
+
+	public List<ItemPedido> buscaPorIdPedido(int id) {
 		List<ItemPedido> lista = new ArrayList<ItemPedido>();
 		Connection conexao = FabricaDeConexao.getConnection();
 		String sql = "select * from item_pedido where id_pedido = ?;";

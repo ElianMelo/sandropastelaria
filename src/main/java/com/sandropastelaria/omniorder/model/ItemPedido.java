@@ -69,5 +69,10 @@ public class ItemPedido {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ItemPedido [idPedido=" + idPedido + ", idProduto=" + idProduto + ", quantidade=" + quantidade + "]";
+	}
     
 }

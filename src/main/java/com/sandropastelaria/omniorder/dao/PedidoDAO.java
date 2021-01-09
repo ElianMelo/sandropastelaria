@@ -101,6 +101,60 @@ public class PedidoDAO {
 		return lista;
 	}
 
+	public List<Pedido> todosAberto() {
+		List<Pedido> lista = new ArrayList<Pedido>();
+		Connection conexao = FabricaDeConexao.getConnection();
+		String sql = "select * from pedido where estado_pedido <> ?;";
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, EstadoPedido.FECHADO.getDescricao());
+
+			ResultSet retorno = stmt.executeQuery();
+			while (retorno.next()) {
+				Integer idPedido = retorno.getInt("id_pedido");
+				String estadoPedido = retorno.getString("estado_pedido");
+				String estadoCozinha = retorno.getString("estado_cozinha");
+				Integer idMesa = retorno.getInt("id_mesa");
+				
+				Pedido pedido = new Pedido(idPedido, estadoPedido, estadoCozinha, idMesa);
+				lista.add(pedido);
+			}
+			retorno.close();
+			stmt.close();
+			conexao.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return lista;
+	}
+
+	public List<Pedido> todosPreparando() {
+		List<Pedido> lista = new ArrayList<Pedido>();
+		Connection conexao = FabricaDeConexao.getConnection();
+		String sql = "select * from pedido where estado_cozinha <> ?;";
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, EstadoCozinha.FINALIZADO.getDescricao());
+
+			ResultSet retorno = stmt.executeQuery();
+			while (retorno.next()) {
+				Integer idPedido = retorno.getInt("id_pedido");
+				String estadoPedido = retorno.getString("estado_pedido");
+				String estadoCozinha = retorno.getString("estado_cozinha");
+				Integer idMesa = retorno.getInt("id_mesa");
+				
+				Pedido pedido = new Pedido(idPedido, estadoPedido, estadoCozinha, idMesa);
+				lista.add(pedido);
+			}
+			retorno.close();
+			stmt.close();
+			conexao.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return lista;
+	}
+
 	public void excluir(int id) {
 		Connection conexao = FabricaDeConexao.getConnection();
 		PreparedStatement stmt;
@@ -130,6 +184,60 @@ public class PedidoDAO {
             stmt.setInt(4, pedido.getIdPedido());
 
 			stmt.execute();
+			stmt.close();
+			conexao.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void atualizar(Pedido pedido, List<ItemPedido> itens) {
+		Connection conexao = FabricaDeConexao.getConnection();
+		PreparedStatement stmt;
+		String sql = "update pedido set estado_pedido=?,estado_cozinha=?,id_mesa=?"
+				+ " where id_pedido = ?";
+		try {
+            stmt = conexao.prepareStatement(sql);
+            
+			stmt.setString(1, pedido.getEstadoPedido());
+			stmt.setString(2, pedido.getEstadoCozinha());
+			stmt.setInt(3, pedido.getIdMesa());
+            stmt.setInt(4, pedido.getIdPedido());
+
+			stmt.execute();
+
+			Integer idMesa = pedido.getIdMesa();
+			//Integer idPedido = pedido.getIdPedido();
+
+			// Inserir ItemPedido
+			ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
+			ProdutoDAO produtoDAO = new ProdutoDAO();
+			for(ItemPedido item : itens) {
+
+				ItemPedido itemBuscado = itemPedidoDAO.buscaPorId(item.getIdPedido(), item.getIdProduto());
+
+				if(itemBuscado != null) {
+					itemPedidoDAO.atualizar(item);
+				} else {
+					itemPedidoDAO.inserir(item);
+				}
+
+				// Muda Produto
+				Produto produto = produtoDAO.buscaPorId(item.getIdProduto());
+				if(!produto.getTipoProduto().equals(TipoProduto.PASTEL.getDescricao())) {
+					produto.setQuantidade(produto.getQuantidade() - item.getQuantidade());
+					if(produto.getQuantidade() < 0) {
+						throw new SQLException("Quantidade excedente em estoque.");
+					}
+				}
+				produtoDAO.atualizar(produto);
+			}
+
+			// Mudar EstadoMesa
+			MesaDAO mesaDAO = new MesaDAO();
+			Mesa mesa = new Mesa(idMesa, true, false);
+			mesaDAO.atualizar(mesa);
+
 			stmt.close();
 			conexao.close();
 		} catch (Exception e) {

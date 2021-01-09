@@ -11,8 +11,4 @@ public class Omniorder {
         return "login";
     }
     
-    @RequestMapping("/cozinha")
-    public String controllerCozinha() {
-        return "cozinha";
-    }
 }

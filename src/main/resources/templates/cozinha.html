@@ -11,131 +11,33 @@
 			<div class="table-data">
 				<h2 class="title-section">Lista de Pedidos</h2>
 				<div class="cards-order cards-auto">
-					<div class="box">
+
+					<div class="box" th:each="pedido : ${pedidos}">
 						<div class="header-box"></div>
 						<div class="ball-header">
-							<p>10</p>
+							<p th:text="${pedido.idMesa}"></p>
 						</div>
 						<div class="outer-info">
-							<h2>Pedido #0191</h2>
-							<p>18:30:23</p>
+							<h2 th:text="'Pedido #' + ${pedido.idPedido}"></h2>
+							<p>00:00:00</p>
 							<div class="info-sol">
 								<div>
 									<p>
-										<span>A</span> status pedido
+										<span th:text="${pedido.estadoCozinha.charAt(0)}"></span> status pedido
 									</p>
 								</div>
 
 								<div>
 									<p>
-										<span>10</span> n° produtos
+										<span th:text="${pedido.itens.size()}"></span> n° produtos
 									</p>
 								</div>
 							</div>
 
-							<a href="#">Finalizar</a>
+							<a th:href="@{/fechar-cozinha(id=*{pedido.idPedido})}">Finalizar</a>
 						</div>
 					</div>
-					<div class="box">
-						<div class="header-box"></div>
-						<div class="ball-header">
-							<p>10</p>
-						</div>
-						<div class="outer-info">
-							<h2>Pedido #0191</h2>
-							<p>18:30:23</p>
-							<div class="info-sol">
-								<div>
-									<p>
-										<span>A</span> status pedido
-									</p>
-								</div>
 
-								<div>
-									<p>
-										<span>10</span> n° produtos
-									</p>
-								</div>
-							</div>
-
-							<a href="#">Finalizar</a>
-						</div>
-					</div>
-					<div class="box">
-						<div class="header-box"></div>
-						<div class="ball-header">
-							<p>10</p>
-						</div>
-						<div class="outer-info">
-							<h2>Pedido #0191</h2>
-							<p>18:30:23</p>
-							<div class="info-sol">
-								<div>
-									<p>
-										<span>A</span> status pedido
-									</p>
-								</div>
-
-								<div>
-									<p>
-										<span>10</span> n° produtos
-									</p>
-								</div>
-							</div>
-
-							<a href="#">Finalizar</a>
-						</div>
-					</div>
-					<div class="box">
-						<div class="header-box"></div>
-						<div class="ball-header">
-							<p>10</p>
-						</div>
-						<div class="outer-info">
-							<h2>Pedido #0191</h2>
-							<p>18:30:23</p>
-							<div class="info-sol">
-								<div>
-									<p>
-										<span>A</span> status pedido
-									</p>
-								</div>
-
-								<div>
-									<p>
-										<span>10</span> n° produtos
-									</p>
-								</div>
-							</div>
-
-							<a href="#">Finalizar</a>
-						</div>
-					</div>
-					<div class="box">
-						<div class="header-box"></div>
-						<div class="ball-header">
-							<p>10</p>
-						</div>
-						<div class="outer-info">
-							<h2>Pedido #0191</h2>
-							<p>18:30:23</p>
-							<div class="info-sol">
-								<div>
-									<p>
-										<span>A</span> status pedido
-									</p>
-								</div>
-
-								<div>
-									<p>
-										<span>10</span> n° produtos
-									</p>
-								</div>
-							</div>
-
-							<a href="#">Finalizar</a>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

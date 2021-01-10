@@ -193,6 +193,10 @@ button[type="submit"]:hover {
 	cursor: pointer;
 }
 
+.icon-red i {
+	color: red;
+}
+
 /* Estilos da seção de registros */
 .table-manager {
 	width: 100%;
@@ -208,8 +212,8 @@ button[type="submit"]:hover {
 	color: #000;
 }
 
-.table-data .icon-delete > i {
-	color: red;
+.icon-delete i {
+	color: red !important;
 }
 
 /* Estilos da seção de cadastro */

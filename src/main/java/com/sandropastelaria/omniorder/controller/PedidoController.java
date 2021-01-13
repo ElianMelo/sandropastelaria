@@ -257,6 +257,7 @@ public class PedidoController {
 	public String addItemAlterar(Model modelo, Pedido pedido, ItemPedido item, @RequestParam("addItem") String addRow) {
 		MesaDAO mesaDAO = new MesaDAO();
 		ProdutoDAO produtoDAO = new ProdutoDAO();
+		ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
 		List<Mesa> mesas = mesaDAO.todos();
 		List<Produto> produtos = produtoDAO.todos();
 
@@ -270,12 +271,19 @@ public class PedidoController {
 		for(int i = 0; i < itensAtualizar.size(); i++) {
 			if(itensAtualizar.get(i).equals(item)) {
 				ItemPedido itemOriginal = itensAtualizar.get(i);
+				ItemPedido itemBanco = itemPedidoDAO.buscaPorId(itemOriginal.getIdPedido(), itemOriginal.getIdProduto());
 				ItemPedido itemAlterado = new ItemPedido(itemOriginal.getIdPedido(), itemOriginal.getIdProduto(), itemOriginal.getQuantidade());
 				int qtd = itemAlterado.getQuantidade() + item.getQuantidade();
-				itemAlterado.setQuantidade(qtd);
+				int qtdBanco = 0;
+				if(itemBanco != null) {
+					qtdBanco = itemBanco.getQuantidade();
+					qtd -= qtdBanco;
+				}
+				
+				itemAlterado.setQuantidade(qtd + qtdBanco);
 
 				Produto produto = produtoDAO.buscaPorId(itemAlterado.getIdProduto());
-				if(produto.getQuantidade() < itemAlterado.getQuantidade() && produto.getTipoProduto() != TipoProduto.PASTEL.getDescricao()) {
+				if(produto.getQuantidade() < qtd && produto.getTipoProduto() != TipoProduto.PASTEL.getDescricao()) {
 					pedido.setItens(itensAtualizar);
 					modelo.addAttribute("pedido", pedido);
 					return "pedido/pedido-atualizar";
@@ -352,13 +360,22 @@ public class PedidoController {
 	public String editaPedido(Pedido pedido) {
 		PedidoDAO pedidoDao = new PedidoDAO();
 		ProdutoDAO produtoDAO = new ProdutoDAO();
+		ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
 
 		for(ItemPedido item : itensAtualizar) {
 			Produto produto = produtoDAO.buscaPorId(item.getIdProduto());
 			if(!produto.getTipoProduto().equals(TipoProduto.PASTEL.getDescricao())) {
-				produto.setQuantidade(produto.getQuantidade() - item.getQuantidade());
+				ItemPedido pedidoExistente = itemPedidoDAO.buscaPorId(item.getIdPedido(), item.getIdProduto());
+				Integer quantidade = item.getQuantidade();
+
+				if(pedidoExistente != null) {
+					quantidade -= pedidoExistente.getQuantidade();
+				}
+
+				produto.setQuantidade(produto.getQuantidade() - quantidade);
+
 				if(produto.getQuantidade() < 0) {
-					return "pedido/pedido-atualizar";
+					return "redirect:pedido-atualizar?id=" + pedido.getIdPedido();
 				}
 			}
 		}

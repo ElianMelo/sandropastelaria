@@ -215,6 +215,7 @@ public class PedidoDAO {
 			stmt.execute();
 
 			Integer idMesa = pedido.getIdMesa();
+			System.out.println(idMesa);
 			//Integer idPedido = pedido.getIdPedido();
 
 			// Inserir ItemPedido
@@ -223,8 +224,10 @@ public class PedidoDAO {
 			for(ItemPedido item : itens) {
 
 				ItemPedido itemBuscado = itemPedidoDAO.buscaPorId(item.getIdPedido(), item.getIdProduto());
+				Integer quantidade = item.getQuantidade();
 
 				if(itemBuscado != null) {
+					quantidade -= itemBuscado.getQuantidade();
 					itemPedidoDAO.atualizar(item);
 				} else {
 					itemPedidoDAO.inserir(item);
@@ -233,7 +236,7 @@ public class PedidoDAO {
 				// Muda Produto
 				Produto produto = produtoDAO.buscaPorId(item.getIdProduto());
 				if(!produto.getTipoProduto().equals(TipoProduto.PASTEL.getDescricao())) {
-					produto.setQuantidade(produto.getQuantidade() - item.getQuantidade());
+					produto.setQuantidade(produto.getQuantidade() - quantidade);
 					if(produto.getQuantidade() < 0) {
 						throw new SQLException("Quantidade excedente em estoque.");
 					}

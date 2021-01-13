@@ -41,3 +41,10 @@ menuBar.addEventListener('click', (e) => {
     enableOrDisableClass(componentsScreens, idNumber);
   }
 });
+
+
+
+function teste() {
+	console.log("Não deixo enviar"); 
+	return false; 
+}

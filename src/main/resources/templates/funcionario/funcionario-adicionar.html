@@ -37,7 +37,7 @@
 								<div class="form-group columns-25">
 									<label for="cpf" class="col-form-label">RG</label>
 									<div>
-										<input th:field="*{rg}" type="text" class="form-control" id="rg" required>
+										<input th:field="*{rg}" type="text" class="form-control" id="rg" onkeypress="inserirMascara('rg', 'XX-xx.xxx.xxx')" required>
 									</div>
 								</div>
 							</div>

@@ -155,34 +155,45 @@ public class PedidoController {
 	}
 
 	@GetMapping("/excluir-item")
-	public String removeItem(Model modelo, Pedido pedido, ItemPedido item, @RequestParam("id") Integer id) {
-		MesaDAO mesaDAO = new MesaDAO();
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		List<Mesa> mesas = mesaDAO.todos();
-		List<Produto> produtos = produtoDAO.todos();
-		List<Mesa> mesasFiltradas = new ArrayList<>();
-
-		for(Mesa mesa : mesas) {
-			if(mesa.isLivre()) {
-				mesasFiltradas.add(mesa);
-			}
-		}
-		modelo.addAttribute("item", new ItemPedido());
-		modelo.addAttribute("mesas", mesasFiltradas);
-		modelo.addAttribute("produtos", produtos);
-		modelo.addAttribute("produto", new Produto());
-	
+	public String removeItem(Model modelo, Pedido pedido, HttpSession session, ItemPedido item, @RequestParam("id") Integer id) {
+		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
 		
-		for(int i = 0; i < itens.size(); i++) {
-			if(itens.get(i).getIdProduto() == id) {
-				itens.remove(i);
-				break;
-			}
-		}
+		if (usuarioLogado != null) {
+			String cargo = usuarioLogado.getCargo();
+			
+			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
+				MesaDAO mesaDAO = new MesaDAO();
+				ProdutoDAO produtoDAO = new ProdutoDAO();
+				List<Mesa> mesas = mesaDAO.todos();
+				List<Produto> produtos = produtoDAO.todos();
+				List<Mesa> mesasFiltradas = new ArrayList<>();
 
-		pedido.setItens(itens);
-		modelo.addAttribute("pedido", pedido);
-		return "redirect:pedido-adicionar";
+				for(Mesa mesa : mesas) {
+					if(mesa.isLivre()) {
+						mesasFiltradas.add(mesa);
+					}
+				}
+				modelo.addAttribute("item", new ItemPedido());
+				modelo.addAttribute("mesas", mesasFiltradas);
+				modelo.addAttribute("produtos", produtos);
+				modelo.addAttribute("produto", new Produto());
+				
+				for(int i = 0; i < itens.size(); i++) {
+					if(itens.get(i).getIdProduto() == id) {
+						itens.remove(i);
+						break;
+					}
+				}
+
+				pedido.setItens(itens);
+				modelo.addAttribute("pedido", pedido);
+				return "redirect:pedido-adicionar";
+			} else {
+				return "error/403";
+			}
+		} else {
+			return "redirect:/";
+		}
 	}
 
 	// Adiciona um novo pedido
@@ -292,37 +303,49 @@ public class PedidoController {
 	}
 
 	@GetMapping("/excluir-item-atualizar")
-	public String removeItemAlterado(Model modelo, Pedido pedido, ItemPedido item, @RequestParam("id") Integer id, @RequestParam("idPedido") Integer idPedido) {
-		MesaDAO mesaDAO = new MesaDAO();
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		List<Mesa> mesas = mesaDAO.todos();
-		List<Produto> produtos = produtoDAO.todos();
-		List<Mesa> mesasFiltradas = new ArrayList<>();
-
-		for(Mesa mesa : mesas) {
-			if(mesa.isLivre()) {
-				mesasFiltradas.add(mesa);
-			}
-		}
-		modelo.addAttribute("item", new ItemPedido());
-		modelo.addAttribute("mesas", mesasFiltradas);
-		modelo.addAttribute("produtos", produtos);
-		modelo.addAttribute("produto", new Produto());
+	public String removeItemAlterado(Model modelo, Pedido pedido, HttpSession session, ItemPedido item, @RequestParam("id") Integer id, @RequestParam("idPedido") Integer idPedido) {
+		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
 		
-		for(int i = 0; i < itensAtualizar.size(); i++) {
-			if(itensAtualizar.get(i).getIdProduto() == id) {
-				itensAtualizar.remove(i);
-				break;
+		if (usuarioLogado != null) {
+			String cargo = usuarioLogado.getCargo();
+			
+			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
+				MesaDAO mesaDAO = new MesaDAO();
+				ProdutoDAO produtoDAO = new ProdutoDAO();
+				List<Mesa> mesas = mesaDAO.todos();
+				List<Produto> produtos = produtoDAO.todos();
+				List<Mesa> mesasFiltradas = new ArrayList<>();
+
+				for(Mesa mesa : mesas) {
+					if(mesa.isLivre()) {
+						mesasFiltradas.add(mesa);
+					}
+				}
+				modelo.addAttribute("item", new ItemPedido());
+				modelo.addAttribute("mesas", mesasFiltradas);
+				modelo.addAttribute("produtos", produtos);
+				modelo.addAttribute("produto", new Produto());
+				
+				for(int i = 0; i < itensAtualizar.size(); i++) {
+					if(itensAtualizar.get(i).getIdProduto() == id) {
+						itensAtualizar.remove(i);
+						break;
+					}
+				}
+
+				ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
+				itemPedidoDAO.excluir(idPedido, id);
+
+				pedido.setItens(itensAtualizar);
+				modelo.addAttribute("pedido", pedido);
+				String resultado = "redirect:pedido-atualizar?id=" + idPedido;
+				return resultado;
+			} else {
+				return "error/403";
 			}
+		} else {
+			return "redirect:/";
 		}
-
-		ItemPedidoDAO itemPedidoDAO = new ItemPedidoDAO();
-		itemPedidoDAO.excluir(idPedido, id);
-
-		pedido.setItens(itensAtualizar);
-		modelo.addAttribute("pedido", pedido);
-		String resultado = "redirect:pedido-atualizar?id=" + idPedido;
-		return resultado;
 	}
 	
 	@PostMapping("/pedido-atualizar")
@@ -346,21 +369,45 @@ public class PedidoController {
 	}
 
 	@GetMapping("/fechar-pedido")
-	public String fecharPedido(@RequestParam(value = "id", required = false) Integer id) {
-        PedidoDAO pedidoDAO = new PedidoDAO();
-        Pedido pedido = pedidoDAO.buscaPorId(id);
+	public String fecharPedido(HttpSession session, @RequestParam(value = "id", required = false) Integer id) {
+		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
+		
+		if (usuarioLogado != null) {
+			String cargo = usuarioLogado.getCargo();
+			
+			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
+				PedidoDAO pedidoDAO = new PedidoDAO();
+		        Pedido pedido = pedidoDAO.buscaPorId(id);
 
-		pedido.setEstadoPedido(EstadoPedido.FECHADO.getDescricao());
-        pedidoDAO.atualizar(pedido);
+				pedido.setEstadoPedido(EstadoPedido.FECHADO.getDescricao());
+		        pedidoDAO.atualizar(pedido);
 
-        return "redirect:pedido-listagem";
+		        return "redirect:pedido-listagem";
+			} else {
+				return "error/403";
+			}
+		} else {
+			return "redirect:/";
+		}
 	}
 
 	@GetMapping("/excluir-pedido")
-	public String excluirPedido(@RequestParam(value = "id", required = false) Integer id) {
-        PedidoDAO pedidoDAO = new PedidoDAO();
-		pedidoDAO.excluir(id);
-		return "redirect:pedido-listagem";
+	public String excluirPedido(HttpSession session, @RequestParam(value = "id", required = false) Integer id) {
+		Funcionario usuarioLogado = (Funcionario) session.getAttribute("usuarioLogado");
+		
+		if (usuarioLogado != null) {
+			String cargo = usuarioLogado.getCargo();
+
+			if (cargo.equals("Administrador") || cargo.equals("Garçom")) {
+				PedidoDAO pedidoDAO = new PedidoDAO();
+				pedidoDAO.excluir(id);
+				return "redirect:pedido-listagem";
+			} else {
+				return "error/403";
+			}
+		} else {
+			return "redirect:/";
+		}
 	}
 
 }

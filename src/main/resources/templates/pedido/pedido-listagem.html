@@ -32,9 +32,6 @@
 						<div class="outer-info">
 							<h2 th:text="'Pedido #' + ${pedido.idPedido}"></h2>
 							<p th:text="${pedido.horaInicio.getHours() + ':' + pedido.horaInicio.getMinutes() + ':' + pedido.horaInicio.getSeconds()}">00:00:00</p>
-							<!--
-								pedido.horaInicio.getHours() + ':' + pedido.horaInicio.getMinutes() + ':' + pedido.horaInicio.getSeconds()
-							-->
 							<div class="info-sol">
 								<div>
 									<p>

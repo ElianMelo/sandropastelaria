@@ -65,7 +65,7 @@
 								<tbody>
 									<tr th:each="item : ${pedido.itens}" th:object="${item}">
 										<!-- Alterar -->
-										<td th:text="${produtos.get(item.idProduto-1).getNomeProduto()}"></td>
+										<td th:text="${produto.getDescricaoLista(item, produtos)}"></td>
 										<td th:text="*{quantidade}"></td>
 										<td>
 											<a th:href="@{/excluir-item(id=*{idProduto})}" class="icon-delete">

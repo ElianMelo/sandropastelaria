@@ -1,5 +1,7 @@
 package com.sandropastelaria.omniorder.model;
 
+import java.util.List;
+
 import com.sandropastelaria.omniorder.enums.TipoProduto;
 
 public class Produto {
@@ -68,6 +70,15 @@ public class Produto {
 		int result = 1;
 		result = prime * result + ((idProduto == null) ? 0 : idProduto.hashCode());
 		return result;
+	}
+
+	public String getDescricaoLista(ItemPedido item, List<Produto> produtos) {
+		for(Produto produto : produtos) {
+			if(produto.getIdProduto() == item.getIdProduto()) {
+				return produto.getNomeProduto();
+			}
+		}
+		return "";
 	}
 
 	@Override

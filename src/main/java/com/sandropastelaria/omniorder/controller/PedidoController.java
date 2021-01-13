@@ -87,6 +87,7 @@ public class PedidoController {
 				modelo.addAttribute("item", new ItemPedido());
 				modelo.addAttribute("mesas", mesasFiltradas);
 				modelo.addAttribute("produtos", produtos);
+				modelo.addAttribute("produto", new Produto());
 				return "pedido/pedido-adicionar";
 			} else {
 				return "error/403";
@@ -113,28 +114,32 @@ public class PedidoController {
 		modelo.addAttribute("item", new ItemPedido());
 		modelo.addAttribute("mesas", mesasFiltradas);
 		modelo.addAttribute("produtos", produtos);
+		modelo.addAttribute("produto", new Produto());
 
 		boolean alterado = false;
 
 		for(int i = 0; i < itens.size(); i++) {
 			if(itens.get(i).equals(item)) {
-				ItemPedido itemAlterado = itens.get(i);
+				ItemPedido itemOriginal = itens.get(i);
+				ItemPedido itemAlterado = new ItemPedido(itemOriginal.getIdPedido(), itemOriginal.getIdProduto(), itemOriginal.getQuantidade());
 				int qtd = itemAlterado.getQuantidade() + item.getQuantidade();
 				itemAlterado.setQuantidade(qtd);
-				itens.set(i, itemAlterado);
-				alterado = true;
 
 				Produto produto = produtoDAO.buscaPorId(itemAlterado.getIdProduto());
-				if(produto.getQuantidade() < itemAlterado.getQuantidade() && produto.getTipoProduto() != TipoProduto.PASTEL.getDescricao()) {
+
+				if(produto.getQuantidade() < itemAlterado.getQuantidade() && (produto.getTipoProduto() != TipoProduto.PASTEL.getDescricao())) {
 					pedido.setItens(itens);
 					modelo.addAttribute("pedido", pedido);
 					return "pedido/pedido-adicionar";
+				} else {
+					itens.set(i, itemAlterado);
+					alterado = true;
 				}
 			}
 		}
 
 		Produto produto = produtoDAO.buscaPorId(item.getIdProduto());
-		if(produto.getQuantidade() < item.getQuantidade() && produto.getTipoProduto() != TipoProduto.PASTEL.getDescricao()) {
+		if(produto.getQuantidade() < item.getQuantidade() && (produto.getTipoProduto() != TipoProduto.PASTEL.getDescricao())) {
 			pedido.setItens(itens);
 			modelo.addAttribute("pedido", pedido);
 			return "pedido/pedido-adicionar";
@@ -165,6 +170,7 @@ public class PedidoController {
 		modelo.addAttribute("item", new ItemPedido());
 		modelo.addAttribute("mesas", mesasFiltradas);
 		modelo.addAttribute("produtos", produtos);
+		modelo.addAttribute("produto", new Produto());
 	
 		
 		for(int i = 0; i < itens.size(); i++) {
@@ -225,6 +231,7 @@ public class PedidoController {
 				modelo.addAttribute("item", new ItemPedido());
 				modelo.addAttribute("mesas", mesas);
 				modelo.addAttribute("produtos", produtos);
+				modelo.addAttribute("produto", new Produto());
 				return "pedido/pedido-atualizar";
 			} else {
 				return "error/403";
@@ -245,22 +252,25 @@ public class PedidoController {
 		modelo.addAttribute("item", new ItemPedido());
 		modelo.addAttribute("mesas", mesas);
 		modelo.addAttribute("produtos", produtos);
+		modelo.addAttribute("produto", new Produto());
 
 		boolean alterado = false;
 
 		for(int i = 0; i < itensAtualizar.size(); i++) {
 			if(itensAtualizar.get(i).equals(item)) {
-				ItemPedido itemAlterado = itensAtualizar.get(i);
+				ItemPedido itemOriginal = itensAtualizar.get(i);
+				ItemPedido itemAlterado = new ItemPedido(itemOriginal.getIdPedido(), itemOriginal.getIdProduto(), itemOriginal.getQuantidade());
 				int qtd = itemAlterado.getQuantidade() + item.getQuantidade();
 				itemAlterado.setQuantidade(qtd);
-				itensAtualizar.set(i, itemAlterado);
-				alterado = true;
 
 				Produto produto = produtoDAO.buscaPorId(itemAlterado.getIdProduto());
 				if(produto.getQuantidade() < itemAlterado.getQuantidade() && produto.getTipoProduto() != TipoProduto.PASTEL.getDescricao()) {
 					pedido.setItens(itensAtualizar);
 					modelo.addAttribute("pedido", pedido);
 					return "pedido/pedido-atualizar";
+				} else {
+					itensAtualizar.set(i, itemAlterado);
+					alterado = true;
 				}
 			}
 		}
@@ -297,7 +307,7 @@ public class PedidoController {
 		modelo.addAttribute("item", new ItemPedido());
 		modelo.addAttribute("mesas", mesasFiltradas);
 		modelo.addAttribute("produtos", produtos);
-	
+		modelo.addAttribute("produto", new Produto());
 		
 		for(int i = 0; i < itensAtualizar.size(); i++) {
 			if(itensAtualizar.get(i).getIdProduto() == id) {
